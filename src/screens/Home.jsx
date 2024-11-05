@@ -4,7 +4,18 @@ import { useGlobalContext } from "../context"
 
 const Home = () => {
     const { recipeList } = useGlobalContext()
-    return (recipeList ? <h1>home, recipe valid</h1> : <h1>home, recipe invalid</h1>)    
+ 
+    const addRecipeButton = () => {
+        console.log('add recipe');        
+    }
+
+    return <main>
+        <h1>Recipes</h1>
+        {recipeList ? <h2>home, recipe valid</h2> : <section>
+                <h2>No recipes added!</h2>
+                <button onClick={addRecipeButton}>Add recipe</button>
+            </section>}
+    </main>    
 }
 
 export default Home
