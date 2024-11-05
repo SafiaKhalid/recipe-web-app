@@ -1,9 +1,22 @@
 import React from "react"
+import { Link } from "react-router-dom"
 
-import { reducer, defaultState } from './reducer'
+import { useGlobalContext } from "../context"
 
 const Home = () => {
-    return <h1>home</h1>
+    const { recipeList } = useGlobalContext()
+
+    return <main>
+        <h1>Recipes</h1>
+        {recipeList ? <h2>home, recipe valid</h2> : <section>
+                <h2>No recipes added!</h2>
+                <button>
+                    <Link to='/add'>
+                        Add recipe
+                    </Link>                    
+                </button>
+            </section>}
+    </main>    
 }
 
 export default Home
