@@ -90,7 +90,7 @@ const AddRecipe = () => {
                 <textarea id="notes"></textarea>
             </div>
 
-            <input type="submit" value="Add recipe" />
+            <button type="submit">Add recipe</button>
         </form>
     </main>
 }
