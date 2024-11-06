@@ -6,6 +6,7 @@ const AddRecipe = () => {
     const [newRecipe, setNewRecipe] = useState({
         id: null,
         timeStamp: null,
+        image: null,
         recipeName: null,
         category: [],
         prepTime: null,
@@ -42,7 +43,7 @@ const AddRecipe = () => {
             cookTime: e.target.cook_time.value,
             servings: e.target.servings.value,
             description: e.target.description.value,
-            
+
             notes: e.target.notes.value,
         })
         console.log('newRecipe:', newRecipe);
@@ -77,6 +78,10 @@ const AddRecipe = () => {
                 <label htmlFor='description'>Description</label>
                 <textarea id="description"></textarea>
             </div>
+            {/* <div>
+                <label htmlFor='ingredients'>Ingredients</label>
+                <textarea id="ingredients"></textarea>
+            </div> */}
             <div>
                 <label htmlFor='notes'>Notes</label>
                 <textarea id="notes"></textarea>
