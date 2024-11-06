@@ -2,7 +2,7 @@ import { useState } from "react"
 import Select from "react-select"
 import { v4 as uuidv4 } from "uuid"
 
-import Ingredients from "../components/Ingredients"
+import MultiInput from "../components/MultiInput"
 
 const AddRecipe = () => {
     const [newRecipe, setNewRecipe] = useState({
@@ -21,7 +21,8 @@ const AddRecipe = () => {
     })
 
     const [selected, setSelected] = useState(null)
-    const [fields, setFields] = useState([])
+    const [ingredientFields, setIngredientFields] = useState([])
+    const [methodFields, setMethodFields] = useState([])
 
     const categoryOptions = [
         {value: 'breakfast', label: 'Breakfast'},
@@ -46,7 +47,8 @@ const AddRecipe = () => {
             cookTime: e.target.cook_time.value,
             servings: e.target.servings.value,
             description: e.target.description.value,
-            ingredients: fields.map(item => item.ingredient),
+            ingredients: ingredientFields.map(listItem => listItem.item),
+            method: methodFields.map(listItem => listItem.item),
             notes: e.target.notes.value,
         })
         console.log('newRecipe:', newRecipe);
@@ -62,16 +64,17 @@ const AddRecipe = () => {
                 <input type="text" id="recipe_name" required></input>
             </div>
             <div>
+                {/*connect label to select component */}
                 <label /* htmlFor='category' */>Category</label>                
                 <Select id="category" name="category" defaultValue={selected} options={categoryOptions} onChange={setSelected} isMulti required />
             </div>
             <div>
                 <label htmlFor='prep_time'>Preparation time</label>
-                <input type="time" id="prep_time" name='prep_time' min='00:00' required></input>
+                <input type="time" id="prep_time" name='prep_time' min='00:00'></input>
             </div>
             <div>
                 <label htmlFor='cook_time'>Cook time</label>
-                <input type="time" id="cook_time" name="cook_time" min='00:00' required></input>
+                <input type="time" id="cook_time" name="cook_time" min='00:00'></input>
             </div>
             <div>
                 <label htmlFor='servings'>Servings</label>
@@ -81,11 +84,8 @@ const AddRecipe = () => {
                 <label htmlFor='description'>Description</label>
                 <textarea id="description"></textarea>
             </div>
-            <Ingredients fields={fields} setFields={setFields} />
-            {/* <div>
-                <label htmlFor='ingredients'>Ingredients</label>
-                <textarea id="ingredients"></textarea>
-            </div> */}
+            <MultiInput fields={ingredientFields} setFields={setIngredientFields} numbered={false} />
+            <MultiInput fields={methodFields} setFields={setMethodFields} numbered={true} />
             <div>
                 <label htmlFor='notes'>Notes</label>
                 <textarea id="notes"></textarea>
