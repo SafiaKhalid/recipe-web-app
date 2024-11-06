@@ -66,7 +66,7 @@ const AddRecipe = () => {
             </div>
             <div>
                 <label htmlFor='servings'>Servings</label>
-                <input type="text" id="servings"></input>
+                <input type="number" id="servings"></input>
             </div>
             <div>
                 <label htmlFor='description'>Description</label>
