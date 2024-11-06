@@ -36,9 +36,14 @@ const AddRecipe = () => {
         setNewRecipe({
             id: uuidv4(),
             timeStamp: date,
+            recipeName: e.target.recipe_name.value,
             category: selected.map(item => item.value),
             prepTime: e.target.prep_time.value,
-            cookTime: e.target.cook_time.value
+            cookTime: e.target.cook_time.value,
+            servings: e.target.servings.value,
+            description: e.target.description.value,
+            
+            notes: e.target.notes.value,
         })
         console.log('newRecipe:', newRecipe);
         
