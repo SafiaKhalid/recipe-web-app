@@ -15,25 +15,30 @@ const AddRecipe = () => {
         notes: null
     })
 
+    const formSubmit = (e) => {
+        e.preventDefault()
+        console.log('submit')
+    }
+
     return <main>
         <h1>New Recipe</h1>
 
-        <form>
+        <form onSubmit={formSubmit}>
             <div>
-                <label>Recipe name</label>
+                <label htmlFor='recipe_name'>Recipe name</label>
                 <input type="text" id="recipe_name"></input>
             </div>
             <div>
-                <label>Preparation time</label>
-                <input type="text" id="recipe_name"></input>
+                <label htmlFor='prep_time'>Preparation time</label>
+                <input type="text" id="prep_time"></input>
             </div>
             <div>
-                <label>Cook time</label>
-                <input type="text" id="recipe_name"></input>
+                <label htmlFor='cook_time'>Cook time</label>
+                <input type="text" id="cook_time"></input>
             </div>
             <div>
-                <label>Servings</label>
-                <input type="text" id="recipe_name"></input>
+                <label htmlFor='servings'>Servings</label>
+                <input type="text" id="servings"></input>
             </div>
 
             <input type="submit" value="Add recipe" />
