@@ -2,6 +2,8 @@ import { useState } from "react"
 import Select from "react-select"
 import { v4 as uuidv4 } from "uuid"
 
+import Ingredients from "../components/Ingredients"
+
 const AddRecipe = () => {
     const [newRecipe, setNewRecipe] = useState({
         id: null,
@@ -78,6 +80,7 @@ const AddRecipe = () => {
                 <label htmlFor='description'>Description</label>
                 <textarea id="description"></textarea>
             </div>
+            <Ingredients/>
             {/* <div>
                 <label htmlFor='ingredients'>Ingredients</label>
                 <textarea id="ingredients"></textarea>
