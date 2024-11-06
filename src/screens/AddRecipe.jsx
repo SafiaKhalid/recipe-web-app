@@ -1,4 +1,5 @@
 import { useState } from "react"
+import Select from "react-select"
 import { v4 as uuidv4 } from "uuid"
 
 const AddRecipe = () => {
@@ -16,15 +17,28 @@ const AddRecipe = () => {
         notes: null
     })
 
+    const [selected, setSelected] = useState(null)
+
+    const categoryOptions = [
+        {value: 'breakfast', label: 'Breakfast'},
+        {value: 'dessert', label: 'Dessert'},
+        {value: 'dinner', label: 'Dinner'},
+        {value: 'drinks', label: 'Drinks'},        
+        {value: 'lunch', label: 'Lunch'},
+        {value: 'snacks', label: 'Snacks'},
+        {value: 'other', label: 'Other'},
+    ]
+
     const formSubmit = (e) => {
         e.preventDefault()
-        const date = new Date().toLocaleDateString()
+        const date = new Date().toLocaleDateString()        
         
         setNewRecipe({
             id: uuidv4(),
             timeStamp: date,
+            category: selected.map(item => item.value),
             prepTime: e.target.prep_time.value,
-            cookTime: e.tarhet.cook_time.value
+            cookTime: e.target.cook_time.value
         })
         console.log('newRecipe:', newRecipe);
         
@@ -39,8 +53,8 @@ const AddRecipe = () => {
                 <input type="text" id="recipe_name" required></input>
             </div>
             <div>
-                <label htmlFor='category'>Category</label>
-                <input type="text" id="category" required></input>
+                <label /* htmlFor='category' */>Category</label>                
+                <Select id="category" name="category" defaultValue={selected} options={categoryOptions} onChange={setSelected} isMulti required />
             </div>
             <div>
                 <label htmlFor='prep_time'>Preparation time</label>
