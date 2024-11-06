@@ -15,8 +15,8 @@ const AddRecipe = () => {
         cookTime: null,
         servings: null,
         description: null,
-        ingredients: [], //add
-        method: [], //add
+        ingredients: [],
+        method: [],
         notes: null
     })
 
@@ -52,7 +52,16 @@ const AddRecipe = () => {
             notes: e.target.notes.value,
         })
         console.log('newRecipe:', newRecipe);
-        
+
+        e.target.recipe_name.value = ''
+        setSelected(null)
+        e.target.prep_time.value = ''
+        e.target.cook_time.value = ''
+        e.target.servings.value = ''
+        e.target.description.value = ''
+        setIngredientFields([])
+        setMethodFields([])
+        e.target.notes.value = ''
     }
 
     return <main>
@@ -66,7 +75,7 @@ const AddRecipe = () => {
             <div>
                 {/*connect label to select component */}
                 <label /* htmlFor='category' */>Category</label>                
-                <Select id="category" name="category" defaultValue={selected} options={categoryOptions} onChange={setSelected} isMulti required />
+                <Select id="category" name="category" value={selected} options={categoryOptions} onChange={setSelected} isMulti required />
             </div>
             <div>
                 <label htmlFor='prep_time'>Preparation time</label>
