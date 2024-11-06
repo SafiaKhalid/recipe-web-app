@@ -6,7 +6,7 @@ const AddRecipe = () => {
         id: null,
         timeStamp: null,
         recipeName: null,
-        category: null,
+        category: [],
         prepTime: null,
         cookTime: null,
         servings: null,
