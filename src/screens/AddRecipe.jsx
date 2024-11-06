@@ -7,7 +7,7 @@ const AddRecipe = () => {
         timeStamp: null,
         recipeName: null,
         category: null,
-        preparationTime: null,
+        prepTime: null,
         cookTime: null,
         servings: null,
         description: null,
@@ -23,7 +23,8 @@ const AddRecipe = () => {
         setNewRecipe({
             id: uuidv4(),
             timeStamp: date,
-
+            prepTime: e.target.prep_time.value,
+            cookTime: e.tarhet.cook_time.value
         })
         console.log('newRecipe:', newRecipe);
         
@@ -43,11 +44,11 @@ const AddRecipe = () => {
             </div>
             <div>
                 <label htmlFor='prep_time'>Preparation time</label>
-                <input type="text" id="prep_time" required></input>
+                <input type="time" id="prep_time" name='prep_time' min='00:00' required></input>
             </div>
             <div>
                 <label htmlFor='cook_time'>Cook time</label>
-                <input type="text" id="cook_time" required></input>
+                <input type="time" id="cook_time" name="cook_time" min='00:00' required></input>
             </div>
             <div>
                 <label htmlFor='servings'>Servings</label>
