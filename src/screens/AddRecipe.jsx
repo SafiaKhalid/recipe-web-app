@@ -18,9 +18,11 @@ const AddRecipe = () => {
 
     const formSubmit = (e) => {
         e.preventDefault()
+        const date = new Date().toLocaleDateString()
         
         setNewRecipe({
             id: uuidv4(),
+            timeStamp: date,
 
         })
         console.log('newRecipe:', newRecipe);
