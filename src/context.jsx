@@ -8,7 +8,14 @@ const AppProvider = ({ children }) => {
     const [state, dispatch] = useReducer(reducer, defaultState)
 
     const addRecipe = (newRecipe) => {
-        const recipe = [...state, newRecipe]
+        let recipe
+        if (state.recipeList) {
+            recipe = [...state.recipeList, newRecipe]        
+        } else {
+            recipe = [newRecipe]
+        }
+        console.log(recipe);
+        
         dispatch({type:'ADD_RECIPE', payload: recipe})
     }
 

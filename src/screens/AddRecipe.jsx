@@ -1,10 +1,12 @@
-import { useState } from "react"
+import { useEffect, useState } from "react"
 import Select from "react-select"
 import { v4 as uuidv4 } from "uuid"
 
 import MultiInput from "../components/MultiInput"
+import { useGlobalContext } from "../context"
 
 const AddRecipe = () => {
+    const { addRecipe } = useGlobalContext()
     const [newRecipe, setNewRecipe] = useState({
         id: null,
         timeStamp: null,
@@ -19,7 +21,6 @@ const AddRecipe = () => {
         method: [],
         notes: null
     })
-
     const [selected, setSelected] = useState(null)
     const [ingredientFields, setIngredientFields] = useState([])
     const [methodFields, setMethodFields] = useState([])
@@ -51,7 +52,6 @@ const AddRecipe = () => {
             method: methodFields.map(listItem => listItem.item),
             notes: e.target.notes.value,
         })
-        console.log('newRecipe:', newRecipe);
 
         e.target.recipe_name.value = ''
         setSelected(null)
@@ -63,6 +63,12 @@ const AddRecipe = () => {
         setMethodFields([])
         e.target.notes.value = ''
     }
+
+    useEffect(() => {
+        if (newRecipe.id) {
+            addRecipe(newRecipe)
+        }        
+    }, [newRecipe])
 
     return <main>
         <h1>New Recipe</h1>
