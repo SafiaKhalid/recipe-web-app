@@ -1,4 +1,20 @@
+import { useState } from "react"
+
 const AddRecipe = () => {
+    const [newRecipe, setNewRecipe] = useState({
+        id: null,
+        timeStamp: null,
+        recipeName: null,
+        category: null,
+        preparationTime: null,
+        cookTime: null,
+        servings: null,
+        description: null,
+        ingredient: [],
+        method: [],
+        notes: null
+    })
+
     return <main>
         <h1>New Recipe</h1>
 
