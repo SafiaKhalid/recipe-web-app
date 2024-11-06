@@ -1,4 +1,5 @@
 import { useState } from "react"
+import { v4 as uuidv4 } from "uuid"
 
 const AddRecipe = () => {
     const [newRecipe, setNewRecipe] = useState({
@@ -17,8 +18,12 @@ const AddRecipe = () => {
 
     const formSubmit = (e) => {
         e.preventDefault()
-        console.log('submit')
-        console.log(e.target.recipe_name.value)
+        
+        setNewRecipe({
+            id: uuidv4(),
+
+        })
+        console.log('newRecipe:', newRecipe);
         
     }
 
