@@ -1,8 +1,4 @@
-import { useState } from "react";
-
-const Ingredients = () => {
-    const [fields, setFields] = useState([])
-
+const Ingredients = ({ fields, setFields }) => {    
     const handleChange = (index, e) => {        
         let newFields = [...fields]
         newFields[index][e.target.name] = e.target.value

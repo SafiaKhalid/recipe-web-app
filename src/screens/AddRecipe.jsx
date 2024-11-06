@@ -21,6 +21,7 @@ const AddRecipe = () => {
     })
 
     const [selected, setSelected] = useState(null)
+    const [fields, setFields] = useState([])
 
     const categoryOptions = [
         {value: 'breakfast', label: 'Breakfast'},
@@ -45,7 +46,7 @@ const AddRecipe = () => {
             cookTime: e.target.cook_time.value,
             servings: e.target.servings.value,
             description: e.target.description.value,
-
+            ingredients: fields.map(item => item.ingredient),
             notes: e.target.notes.value,
         })
         console.log('newRecipe:', newRecipe);
@@ -80,7 +81,7 @@ const AddRecipe = () => {
                 <label htmlFor='description'>Description</label>
                 <textarea id="description"></textarea>
             </div>
-            <Ingredients/>
+            <Ingredients fields={fields} setFields={setFields} />
             {/* <div>
                 <label htmlFor='ingredients'>Ingredients</label>
                 <textarea id="ingredients"></textarea>
