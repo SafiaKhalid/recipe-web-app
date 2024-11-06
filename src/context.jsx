@@ -7,7 +7,8 @@ const AppContext = React.createContext()
 const AppProvider = ({ children }) => {
     const [state, dispatch] = useReducer(reducer, defaultState)
 
-    const addRecipe = (recipe) => {
+    const addRecipe = (newRecipe) => {
+        const recipe = [...state, newRecipe]
         dispatch({type:'ADD_RECIPE', payload: recipe})
     }
 
