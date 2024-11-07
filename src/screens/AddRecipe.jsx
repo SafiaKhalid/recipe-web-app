@@ -132,7 +132,10 @@ const AddRecipe = () => {
             </div>
             <div>
                 <p>Image</p>
-                {displayImage ? <img src={displayImage} alt={newRecipe.name || 'recipe image'} /> : <input type="file" accept="image/png, image/jpeg" onChange={imageHandler} />}
+                {displayImage ? <section>
+                        <img src={displayImage} alt={newRecipe.name || 'recipe image'} />
+                        <input type="file" accept="image/png, image/jpeg" onChange={imageHandler} />
+                    </section> : <input type="file" accept="image/png, image/jpeg" onChange={imageHandler} />}
             </div>
 
             <button type="submit">Add recipe</button>
