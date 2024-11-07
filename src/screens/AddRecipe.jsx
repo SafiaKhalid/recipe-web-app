@@ -105,6 +105,10 @@ const AddRecipe = () => {
                 <label htmlFor='notes'>Notes</label>
                 <textarea id="notes"></textarea>
             </div>
+            <div>
+                <p>Image</p>
+                {newRecipe.image ? <p>image valid</p> : <input type="file" accept="image/png, image/jpeg" />}
+            </div>
 
             <button type="submit">Add recipe</button>
         </form>
