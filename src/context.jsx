@@ -14,7 +14,7 @@ const AppProvider = ({ children }) => {
         } else {
             recipe = [newRecipe]
         }
-        console.log(recipe);
+        console.log('New recipe list', recipe);
         
         dispatch({type:'ADD_RECIPE', payload: recipe})
     }

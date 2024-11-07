@@ -25,6 +25,7 @@ const AddRecipe = () => {
     const [ingredientFields, setIngredientFields] = useState([])
     const [methodFields, setMethodFields] = useState([])
     const [fileData, setFileData] = useState(null)
+    const [displayImage, setDisplayImage] = useState(null)
 
     const categoryOptions = [
         {value: 'breakfast', label: 'Breakfast'},
@@ -35,11 +36,16 @@ const AddRecipe = () => {
         {value: 'snacks', label: 'Snacks'},
         {value: 'other', label: 'Other'},
     ]
+    const imageType = /image\/(png|jpg|jpeg)/i
+    let reader = new FileReader()
 
-    const imageHandler = (e) => {
-        console.log('image selected');        
-        const file = e.target
-
+    const imageHandler = (e) => {            
+        const file = e.target.files[0]
+        if (!file.type.match(imageType)) {
+            alert('Invalid image type')
+            return
+        }
+        setFileData(file)                         
     }
 
     const formSubmit = (e) => {
@@ -49,6 +55,7 @@ const AddRecipe = () => {
         setNewRecipe({
             id: uuidv4(),
             timeStamp: date,
+            image: (fileData || null),
             recipeName: e.target.recipe_name.value,
             category: selected.map(item => item.value),
             prepTime: e.target.prep_time.value,
@@ -68,8 +75,19 @@ const AddRecipe = () => {
         e.target.description.value = ''
         setIngredientFields([])
         setMethodFields([])
+        setDisplayImage(null)
         e.target.notes.value = ''
     }
+
+    reader.addEventListener('load', () => {        
+        setDisplayImage(reader.result)
+    }, false)
+
+    useEffect(() => {
+        if (fileData) {            
+            reader.readAsDataURL(fileData)                        
+        }
+    }, [fileData])
 
     useEffect(() => {
         if (newRecipe.id) {
@@ -114,7 +132,7 @@ const AddRecipe = () => {
             </div>
             <div>
                 <p>Image</p>
-                {newRecipe.image ? <img src={newRecipe.image} alt={newRecipe.name || 'recipe image'} /> : <input type="file" accept="image/png, image/jpeg" onChange={imageHandler} />}
+                {displayImage ? <img src={displayImage} alt={newRecipe.name || 'recipe image'} /> : <input type="file" accept="image/png, image/jpeg" onChange={imageHandler} />}
             </div>
 
             <button type="submit">Add recipe</button>
