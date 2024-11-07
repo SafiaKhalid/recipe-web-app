@@ -24,6 +24,7 @@ const AddRecipe = () => {
     const [selected, setSelected] = useState(null)
     const [ingredientFields, setIngredientFields] = useState([])
     const [methodFields, setMethodFields] = useState([])
+    const [fileData, setFileData] = useState(null)
 
     const categoryOptions = [
         {value: 'breakfast', label: 'Breakfast'},
@@ -35,8 +36,10 @@ const AddRecipe = () => {
         {value: 'other', label: 'Other'},
     ]
 
-    const imageHandler = () => {
+    const imageHandler = (e) => {
         console.log('image selected');        
+        const file = e.target
+
     }
 
     const formSubmit = (e) => {
@@ -111,7 +114,7 @@ const AddRecipe = () => {
             </div>
             <div>
                 <p>Image</p>
-                {newRecipe.image ? <p>image valid</p> : <input type="file" accept="image/png, image/jpeg" onChange={imageHandler} />}
+                {newRecipe.image ? <img src={newRecipe.image} alt={newRecipe.name || 'recipe image'} /> : <input type="file" accept="image/png, image/jpeg" onChange={imageHandler} />}
             </div>
 
             <button type="submit">Add recipe</button>
