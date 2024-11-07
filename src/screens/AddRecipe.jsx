@@ -35,6 +35,10 @@ const AddRecipe = () => {
         {value: 'other', label: 'Other'},
     ]
 
+    const imageHandler = () => {
+        console.log('image selected');        
+    }
+
     const formSubmit = (e) => {
         e.preventDefault()
         const date = new Date().toLocaleDateString()        
@@ -107,7 +111,7 @@ const AddRecipe = () => {
             </div>
             <div>
                 <p>Image</p>
-                {newRecipe.image ? <p>image valid</p> : <input type="file" accept="image/png, image/jpeg" />}
+                {newRecipe.image ? <p>image valid</p> : <input type="file" accept="image/png, image/jpeg" onChange={imageHandler} />}
             </div>
 
             <button type="submit">Add recipe</button>
