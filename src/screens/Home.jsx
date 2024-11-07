@@ -8,7 +8,15 @@ const Home = () => {
 
     return <main>
         <h1>Recipes</h1>
-        {recipeList ? <h2>home, recipe valid</h2> : <section>
+        {recipeList ? <section>
+                <h2>home, recipe valid</h2>                
+                <button>
+                    <Link to='/add'>
+                        Add recipe
+                    </Link>                    
+                </button>
+            </section>
+             : <section>
                 <h2>No recipes added!</h2>
                 <button>
                     <Link to='/add'>
