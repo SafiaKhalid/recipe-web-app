@@ -16,7 +16,7 @@ const Home = () => {
                 </button>
                 <h2>home, recipe valid</h2>   
                 {recipeList.map((recipe) => {
-                    return <RecipeCard key={recipe.id} />
+                    return <RecipeCard key={recipe.id} recipe={recipe} />
                 })}             
             </section>
              : <section>
