@@ -4,10 +4,9 @@ const defaultState = {
 
 const reducer = (state, action) => {
     switch (action.type) {
-        case 'ADD_RECIPE':                         
+        case 'ADD_RECIPE':                                             
             localStorage.setItem('recipeList', JSON.stringify(action.payload))
-            /* console.log('payload:', action.payload); */
-            
+            /* console.log('payload:', action.payload); */            
             /* console.log('local storage:', localStorage); */
             return { ...state, recipeList: action.payload }
         default:
