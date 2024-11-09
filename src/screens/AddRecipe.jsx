@@ -84,6 +84,8 @@ const AddRecipe = () => {
     }, false)
 
     useEffect(() => {
+        console.log('fileData: ', fileData);
+        
         if (fileData) {            
             reader.readAsDataURL(fileData)                        
         }
