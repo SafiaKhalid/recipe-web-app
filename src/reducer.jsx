@@ -5,10 +5,12 @@ const defaultState = {
 const reducer = (state, action) => {
     switch (action.type) {
         case 'ADD_RECIPE':                                             
-            localStorage.setItem('recipeList', JSON.stringify(action.payload))
-            /* console.log('payload:', action.payload); */            
+            /* localStorage.setItem('recipeList', JSON.stringify(action.payload)) */
+
+                      
             /* console.log('local storage:', localStorage); */
-            return { ...state, recipeList: action.payload }
+            console.log('payload:', action.payload);              
+            return { ...state, recipeList: [...(state.recipeList ? state.recipeList : []), action.payload] }
         default:
             throw new Error('no matching type')
     }
