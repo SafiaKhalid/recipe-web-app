@@ -4,7 +4,20 @@ const RecipeCard = ({ recipe }) => {
     const { recipeName, timeStamp, image, prepTime, cookTime } = recipe
     const [displayImage, setDisplayImage] = useState(null)
     let reader = new FileReader()
+    const prepObject = {hours: '', mins: ''}
+    
+    if (prepTime) {
+        prepObject['hours'] = prepTime.slice(0,2)
+        prepObject['mins'] = prepTime.slice(3)
+        if (prepObject.hours[0] == '0') {
+            prepObject['hours'] = prepObject.hours[1]
+        }
+        if ((prepObject.hours) == '0') {
+            prepObject['hours'] = ''
+        }        
 
+    }
+     
 
     reader.addEventListener('load', () => {                        
         setDisplayImage(reader.result)          
@@ -18,8 +31,8 @@ const RecipeCard = ({ recipe }) => {
     return <section>
         <h2>{recipeName}</h2>
         <p>Updated: {timeStamp}</p>
-        {image ? <img src={displayImage} alt={recipeName || 'recipe image'} /> : <p>image</p>}        
-        {prepTime && <p>Preparation time: {prepTime}</p>}
+        {image ? <img src={displayImage} alt={recipeName || 'recipe image'} /> : <p>{recipeName}</p>}        
+        {prepTime && <p>Preparation time: {prepObject.hours.length>0 && `${prepObject.hours}h`} {prepObject.mins.length && `${prepObject.mins}m`} </p>}
         {cookTime && <p>Cook time: {cookTime}</p>}        
 
     </section>

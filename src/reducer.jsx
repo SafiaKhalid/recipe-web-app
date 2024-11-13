@@ -15,7 +15,7 @@ const reducer = (state, action) => {
 
                       
             /* console.log('local storage:', localStorage); */
-            console.log('payload:', action.payload);              
+            /* console.log('payload:', action.payload);      */         
             return { ...state, recipeList: [...(state.recipeList ? state.recipeList : []), action.payload] }
         default:
             throw new Error('no matching type')
