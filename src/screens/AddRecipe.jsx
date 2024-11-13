@@ -12,7 +12,7 @@ const AddRecipe = () => {
         timeStamp: null,
         image: null,
         recipeName: null,
-        category: [],
+        categories: [],
         prepTime: null,
         cookTime: null,
         servings: null,
@@ -57,7 +57,7 @@ const AddRecipe = () => {
             timeStamp: date,
             image: (fileData || null),
             recipeName: e.target.recipe_name.value,
-            category: selected.map(item => item.value),
+            categories: selected.map(item => item.value),
             prepTime: e.target.prep_time.value,
             cookTime: e.target.cook_time.value,
             servings: e.target.servings.value,
@@ -83,9 +83,7 @@ const AddRecipe = () => {
         setDisplayImage(reader.result)
     }, false)
 
-    useEffect(() => {
-        console.log('fileData: ', fileData);
-        
+    useEffect(() => {    
         if (fileData) {            
             reader.readAsDataURL(fileData)                        
         }
@@ -107,7 +105,7 @@ const AddRecipe = () => {
             </div>
             <div>
                 {/*connect label to select component */}
-                <label /* htmlFor='category' */>Category</label>                
+                <label /* htmlFor='category' */>Categories</label>                
                 <Select id="category" name="category" value={selected} options={categoryOptions} onChange={setSelected} isMulti required />
             </div>
             <div>
