@@ -1,30 +1,27 @@
-import { useState, useEffect } from "react"
+import { useState } from "react"
 
 const RecipeCard = ({ recipe }) => {
     const { recipeName, timeStamp, image, prepTime, cookTime } = recipe
     const [displayImage, setDisplayImage] = useState(null)
     let reader = new FileReader()
 
-    /* reader.addEventListener('load', () => {        
-        setDisplayImage(reader.result)
+
+    reader.addEventListener('load', () => {                        
+        setDisplayImage(reader.result)          
     }, false)
 
-    useEffect(() => {
-        if (image) {            
-            reader.readAsDataURL(image)                        
-        }
-    }, [image]) */
-    /* console.log('image data: ', image); */
-    console.log('local storage: ', JSON.parse(localStorage.getItem('recipeList')));
-    
-    
+    /* console.log('Recipe image: ', image); */
+    if (image) {                        
+            reader.readAsDataURL(image)                                  
+    }
 
     return <section>
         <h2>{recipeName}</h2>
         <p>Updated: {timeStamp}</p>
-        {/* {image ? <img src={displayImage} /> : <p>image</p>} */}        
+        {image ? <img src={displayImage} alt={recipeName || 'recipe image'} /> : <p>image</p>}        
         {prepTime && <p>Preparation time: {prepTime}</p>}
         {cookTime && <p>Cook time: {cookTime}</p>}        
+
     </section>
 }
 
