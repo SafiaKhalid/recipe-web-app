@@ -1,5 +1,11 @@
+
+import { db } from "./assets/db";
+
+const databaseList = await db.recipies.toArray()
+
+
 const defaultState = {
-    recipeList: JSON.parse(localStorage.getItem('recipeList')),
+    recipeList: databaseList,
 }
 
 const reducer = (state, action) => {

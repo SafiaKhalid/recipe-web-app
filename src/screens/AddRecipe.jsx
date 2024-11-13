@@ -83,9 +83,7 @@ const AddRecipe = () => {
         setDisplayImage(reader.result)
     }, false)
 
-    useEffect(() => {
-        console.log('fileData: ', fileData);
-        
+    useEffect(() => {    
         if (fileData) {            
             reader.readAsDataURL(fileData)                        
         }
