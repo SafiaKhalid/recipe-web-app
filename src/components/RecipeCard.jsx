@@ -1,6 +1,10 @@
 import { useState } from "react"
+import { Link } from "react-router-dom"
+
+import { useGlobalContext } from "../context"
 
 const RecipeCard = ({ recipe }) => {
+    const { changeCurrentRecipe } = useGlobalContext()
     const { recipeName, timeStamp, image, prepTime, cookTime } = recipe
     const [displayImage, setDisplayImage] = useState(null)
     let reader = new FileReader()
@@ -15,7 +19,13 @@ const RecipeCard = ({ recipe }) => {
         }
         if ((prepObject.hours) == '0') {
             prepObject['hours'] = ''
-        }        
+        }
+        if (prepObject.mins[0] == '0') {
+            prepObject['mins'] = prepObject.mins[1]
+        }
+        if ((prepObject.mins) == '0') {
+            prepObject['mins'] = ''
+        }         
     }
 
     if (cookTime) {
@@ -26,6 +36,12 @@ const RecipeCard = ({ recipe }) => {
         }
         if ((cookObject.hours) == '0') {
             cookObject['hours'] = ''
+        }
+        if (cookObject.mins[0] == '0') {
+            cookObject['mins'] = cookObject.mins[1]
+        }
+        if ((cookObject.mins) == '0') {
+            cookObject['mins'] = ''
         }        
     }
      
@@ -39,14 +55,15 @@ const RecipeCard = ({ recipe }) => {
             reader.readAsDataURL(image)                                  
     }
 
-    return <section>
-        <h2>{recipeName}</h2>
-        <p>Updated: {timeStamp}</p>
-        {image ? <img src={displayImage} alt={recipeName || 'recipe image'} /> : <p>{recipeName}</p>}        
-        {prepTime && <p>Preparation time: {prepObject.hours.length>0 && `${prepObject.hours}h`} {prepObject.mins.length && `${prepObject.mins}m`} </p>}
-        {cookTime && <p>Cook time: {cookObject.hours.length>0 && `${cookObject.hours}h`} {cookObject.mins.length && `${cookObject.mins}m`}</p>}        
-
-    </section>
+    return <button onClick={() => changeCurrentRecipe(recipe)}>
+        <Link to='/view'>
+            <h2>{recipeName}</h2>
+            <p>Updated: {timeStamp}</p>
+            {image ? <img src={displayImage} alt={recipeName || 'recipe image'} /> : <p>{recipeName}</p>}        
+            {prepTime && <p>Preparation time: {prepObject.hours.length>0 && `${prepObject.hours}h`} {prepObject.mins.length && `${prepObject.mins}m`} </p>}
+            {cookTime && <p>Cook time: {cookObject.hours.length>0 && `${cookObject.hours}h`} {cookObject.mins.length && `${cookObject.mins}m`}</p>}        
+        </Link>
+    </button>
 }
 
 export default RecipeCard

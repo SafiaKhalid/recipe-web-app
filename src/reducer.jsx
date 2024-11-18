@@ -1,11 +1,12 @@
-
 import { db } from "./assets/db";
 
 const databaseList = await db.recipies.toArray()
+const databaseCurrent = await db.currentRecipe.toArray()
 
 
 const defaultState = {
     recipeList: databaseList,
+    currentRecipe: databaseCurrent
 }
 
 const reducer = (state, action) => {
@@ -17,6 +18,8 @@ const reducer = (state, action) => {
             /* console.log('local storage:', localStorage); */
             /* console.log('payload:', action.payload);      */         
             return { ...state, recipeList: [...(state.recipeList ? state.recipeList : []), action.payload] }
+        case 'CHANGE_CURRENT':   
+            return { ...state, currentRecipe: [action.payload] }
         default:
             throw new Error('no matching type')
     }

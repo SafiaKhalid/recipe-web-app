@@ -18,17 +18,28 @@ const AppProvider = ({ children }) => {
     const addRecipe = async (newRecipe) => {
         /* console.log('New recipe in context.jsx: ', newRecipe); */
         try {                
-                await db.recipies.add(newRecipe)
+            await db.recipies.add(newRecipe)
         } catch (error) {
             console.error(error)   
         }            
         
         /* console.log('Database: ', databaseList); */
         
-        dispatch({type:'ADD_RECIPE', payload: newRecipe})
+        dispatch({ type:'ADD_RECIPE', payload: newRecipe })
     }
 
-    return <AppContext.Provider value={{...state, addRecipe}}>
+    const changeCurrentRecipe = async (currentRecipe) => {
+        try {
+            await db.currentRecipe.clear()
+            await db.currentRecipe.add(currentRecipe)
+        } catch (error) {
+            console.error(error);   
+        }
+
+        dispatch({ type:'CHANGE_CURRENT', payload: currentRecipe })
+    }
+
+    return <AppContext.Provider value={{...state, addRecipe, changeCurrentRecipe}}>
         {children}
     </AppContext.Provider>
 }
