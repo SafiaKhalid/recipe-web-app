@@ -1,5 +1,6 @@
 import { useState } from "react"
 import { useGlobalContext } from "../context"
+import { Link } from "react-router-dom"
 
 const ViewRecipe = () => {
     const { currentRecipe } = useGlobalContext()
@@ -57,7 +58,9 @@ const ViewRecipe = () => {
     return <main>
         {modalDisplay && <div>
             Are you sure you want to delete this recipe?
-            <button>Yes</button>
+            <Link to='/'>
+                <button>Yes</button>
+            </Link>
             <button onClick={() => setModalDisplay(!modalDisplay)}>Go back</button>
         </div>}
         <h1>View Recipe</h1>
