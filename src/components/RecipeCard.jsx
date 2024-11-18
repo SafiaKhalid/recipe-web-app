@@ -16,8 +16,8 @@ const RecipeCard = ({ recipe }) => {
         if ((prepObject.hours) == '0') {
             prepObject['hours'] = ''
         }        
-
     }
+
     if (cookTime) {
         cookObject['hours'] = cookTime.slice(0,2)
         cookObject['mins'] = cookTime.slice(3)
@@ -27,7 +27,6 @@ const RecipeCard = ({ recipe }) => {
         if ((cookObject.hours) == '0') {
             cookObject['hours'] = ''
         }        
-
     }
      
 
@@ -40,8 +39,6 @@ const RecipeCard = ({ recipe }) => {
             reader.readAsDataURL(image)                                  
     }
 
-
-    //NEXT: display minutes of prep time, display cook time, prevent duplication of code
     return <section>
         <h2>{recipeName}</h2>
         <p>Updated: {timeStamp}</p>
