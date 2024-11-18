@@ -14,7 +14,6 @@ const Home = () => {
                         Add recipe
                     </Link>                    
                 </button>
-                <h2>home, recipe valid</h2>   
                 {recipeList.map((recipe) => {
                     return <RecipeCard key={recipe.id} recipe={recipe} />
                 })}             
