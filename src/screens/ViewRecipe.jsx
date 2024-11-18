@@ -1,9 +1,12 @@
+import { useState } from "react"
 import { useGlobalContext } from "../context"
 
 const ViewRecipe = () => {
     const { currentRecipe } = useGlobalContext()
     const focusRecipe = currentRecipe[0]
     const { recipeName, timeStamp, image, prepTime, cookTime, servings, categories, description, ingredients, method, notes } = focusRecipe
+    const [displayImage, setDisplayImage] = useState(null)
+    let reader = new FileReader()
     const prepObject = {hours: '', mins: ''}
     const cookObject = {hours: '', mins: ''}
     
@@ -40,11 +43,20 @@ const ViewRecipe = () => {
             cookObject['mins'] = ''
         }        
     }
+
+    reader.addEventListener('load', () => {                        
+        setDisplayImage(reader.result)          
+    }, false)
+    
+    if (image) {                        
+            reader.readAsDataURL(image)                                  
+    }
     
     return <main>
         <h1>View Recipe</h1>
         <p>Recipe name: {recipeName}</p>
         <p>Date added: {timeStamp}</p>
+        {image ? <img src={displayImage} alt={recipeName || 'recipe image'} /> : <p>{recipeName}</p>}        
         {prepTime && <p>Preparation time: {prepObject.hours.length>0 && `${prepObject.hours}h`} {prepObject.mins.length && `${prepObject.mins}m`} </p>}
         {cookTime && <p>Cook time: {cookObject.hours.length>0 && `${cookObject.hours}h`} {cookObject.mins.length && `${cookObject.mins}m`}</p>}        
         {servings && <p>Servings: {servings}</p>}        
