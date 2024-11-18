@@ -3,7 +3,7 @@ import { useGlobalContext } from "../context"
 import { Link } from "react-router-dom"
 
 const ViewRecipe = () => {
-    const { currentRecipe } = useGlobalContext()
+    const { currentRecipe, deleteRecipe } = useGlobalContext()
     const focusRecipe = currentRecipe[0]
     const { id, recipeName, timeStamp, image, prepTime, cookTime, servings, categories, description, ingredients, method, notes } = focusRecipe    
     let reader = new FileReader()
@@ -57,10 +57,12 @@ const ViewRecipe = () => {
     
     return <main>
         {modalDisplay && <div>
-            Are you sure you want to delete this recipe?
-            <Link to='/'>
-                <button>Yes</button>
-            </Link>
+            Are you sure you want to delete this recipe?            
+            <button onClick={() => deleteRecipe(focusRecipe)}>
+                <Link to='/'>
+                    Yes
+                </Link>
+            </button>            
             <button onClick={() => setModalDisplay(!modalDisplay)}>Go back</button>
         </div>}
         <h1>View Recipe</h1>
