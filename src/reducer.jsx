@@ -13,13 +13,14 @@ const reducer = (state, action) => {
     switch (action.type) {
         case 'ADD_RECIPE':                                             
             /* localStorage.setItem('recipeList', JSON.stringify(action.payload)) */
-
-                      
             /* console.log('local storage:', localStorage); */
             /* console.log('payload:', action.payload);      */         
             return { ...state, recipeList: [...(state.recipeList ? state.recipeList : []), action.payload] }
         case 'CHANGE_CURRENT':   
             return { ...state, currentRecipe: [action.payload] }
+        case 'DELETE_RECIPE': {                       
+            return { ...state, recipeList: state.recipeList.filter(recipe => recipe.id !== action.payload.id) }
+        }
         default:
             throw new Error('no matching type')
     }
