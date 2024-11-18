@@ -5,7 +5,7 @@ import { Link } from "react-router-dom"
 const ViewRecipe = () => {
     const { currentRecipe, deleteRecipe } = useGlobalContext()
     const focusRecipe = currentRecipe[0]
-    const { id, recipeName, timeStamp, image, prepTime, cookTime, servings, categories, description, ingredients, method, notes } = focusRecipe    
+    const { recipeName, timeStamp, image, prepTime, cookTime, servings, categories, description, ingredients, method, notes } = focusRecipe    
     let reader = new FileReader()
     const prepObject = {hours: '', mins: ''}
     const cookObject = {hours: '', mins: ''}
