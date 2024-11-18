@@ -1,7 +1,10 @@
 import { useState } from "react"
 import { Link } from "react-router-dom"
 
+import { useGlobalContext } from "../context"
+
 const RecipeCard = ({ recipe }) => {
+    const { changeCurrentRecipe } = useGlobalContext()
     const { recipeName, timeStamp, image, prepTime, cookTime } = recipe
     const [displayImage, setDisplayImage] = useState(null)
     let reader = new FileReader()
@@ -40,7 +43,7 @@ const RecipeCard = ({ recipe }) => {
             reader.readAsDataURL(image)                                  
     }
 
-    return <button>
+    return <button onClick={() => changeCurrentRecipe(recipe)}>
         <Link to='/view'>
             <h2>{recipeName}</h2>
             <p>Updated: {timeStamp}</p>

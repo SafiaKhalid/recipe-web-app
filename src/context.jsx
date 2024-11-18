@@ -18,7 +18,7 @@ const AppProvider = ({ children }) => {
     const addRecipe = async (newRecipe) => {
         /* console.log('New recipe in context.jsx: ', newRecipe); */
         try {                
-                await db.recipies.add(newRecipe)
+            await db.recipies.add(newRecipe)
         } catch (error) {
             console.error(error)   
         }            
@@ -33,8 +33,7 @@ const AppProvider = ({ children }) => {
             await db.currentRecipe.clear()
             await db.currentRecipe.add(currentRecipe)
         } catch (error) {
-            console.error(error);
-            
+            console.error(error);   
         }
 
         dispatch({ type:'CHANGE_CURRENT', payload: currentRecipe })
