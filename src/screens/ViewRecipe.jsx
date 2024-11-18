@@ -4,11 +4,13 @@ import { useGlobalContext } from "../context"
 const ViewRecipe = () => {
     const { currentRecipe } = useGlobalContext()
     const focusRecipe = currentRecipe[0]
-    const { id, recipeName, timeStamp, image, prepTime, cookTime, servings, categories, description, ingredients, method, notes } = focusRecipe
-    const [displayImage, setDisplayImage] = useState(null)
+    const { id, recipeName, timeStamp, image, prepTime, cookTime, servings, categories, description, ingredients, method, notes } = focusRecipe    
     let reader = new FileReader()
     const prepObject = {hours: '', mins: ''}
     const cookObject = {hours: '', mins: ''}
+
+    const [displayImage, setDisplayImage] = useState(null)
+    const [modalDisplay, setModalDisplay] = useState(false)
     
     if (prepTime) {
         prepObject['hours'] = prepTime.slice(0,2)
@@ -53,6 +55,11 @@ const ViewRecipe = () => {
     }
     
     return <main>
+        {modalDisplay && <div>
+            Are you sure you want to delete this recipe?
+            <button>Yes</button>
+            <button onClick={() => setModalDisplay(!modalDisplay)}>Go back</button>
+        </div>}
         <h1>View Recipe</h1>
         <p>Recipe name: {recipeName}</p>
         <p>Date added: {timeStamp}</p>
@@ -83,6 +90,10 @@ const ViewRecipe = () => {
         }
         </div>}
         {notes && <p>Notes: {notes}</p>}
+        <button onClick={() => setModalDisplay(!modalDisplay)
+        }>
+            Delete
+        </button>
     </main>
 }
 
