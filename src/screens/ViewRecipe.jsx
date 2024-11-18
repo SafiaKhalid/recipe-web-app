@@ -96,7 +96,9 @@ const ViewRecipe = () => {
         </div>}
         {notes && <p>Notes: {notes}</p>}
         <button onClick={() => console.log('edit')}>
-            Edit
+            <Link to='/edit'>
+                Edit
+            </Link>
         </button>
         <button onClick={() => setModalDisplay(!modalDisplay)}>
             Delete
