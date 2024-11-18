@@ -1,4 +1,5 @@
 import { useState } from "react"
+import { Link } from "react-router-dom"
 
 const RecipeCard = ({ recipe }) => {
     const { recipeName, timeStamp, image, prepTime, cookTime } = recipe
@@ -39,14 +40,15 @@ const RecipeCard = ({ recipe }) => {
             reader.readAsDataURL(image)                                  
     }
 
-    return <section>
-        <h2>{recipeName}</h2>
-        <p>Updated: {timeStamp}</p>
-        {image ? <img src={displayImage} alt={recipeName || 'recipe image'} /> : <p>{recipeName}</p>}        
-        {prepTime && <p>Preparation time: {prepObject.hours.length>0 && `${prepObject.hours}h`} {prepObject.mins.length && `${prepObject.mins}m`} </p>}
-        {cookTime && <p>Cook time: {cookObject.hours.length>0 && `${cookObject.hours}h`} {cookObject.mins.length && `${cookObject.mins}m`}</p>}        
-
-    </section>
+    return <button>
+        <Link to='/view'>
+            <h2>{recipeName}</h2>
+            <p>Updated: {timeStamp}</p>
+            {image ? <img src={displayImage} alt={recipeName || 'recipe image'} /> : <p>{recipeName}</p>}        
+            {prepTime && <p>Preparation time: {prepObject.hours.length>0 && `${prepObject.hours}h`} {prepObject.mins.length && `${prepObject.mins}m`} </p>}
+            {cookTime && <p>Cook time: {cookObject.hours.length>0 && `${cookObject.hours}h`} {cookObject.mins.length && `${cookObject.mins}m`}</p>}        
+        </Link>
+    </button>
 }
 
 export default RecipeCard
