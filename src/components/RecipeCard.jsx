@@ -5,6 +5,7 @@ const RecipeCard = ({ recipe }) => {
     const [displayImage, setDisplayImage] = useState(null)
     let reader = new FileReader()
     const prepObject = {hours: '', mins: ''}
+    const cookObject = {hours: '', mins: ''}
     
     if (prepTime) {
         prepObject['hours'] = prepTime.slice(0,2)
@@ -14,6 +15,17 @@ const RecipeCard = ({ recipe }) => {
         }
         if ((prepObject.hours) == '0') {
             prepObject['hours'] = ''
+        }        
+
+    }
+    if (cookTime) {
+        cookObject['hours'] = cookTime.slice(0,2)
+        cookObject['mins'] = cookTime.slice(3)
+        if (cookObject.hours[0] == '0') {
+            cookObject['hours'] = cookObject.hours[1]
+        }
+        if ((cookObject.hours) == '0') {
+            cookObject['hours'] = ''
         }        
 
     }
@@ -28,12 +40,14 @@ const RecipeCard = ({ recipe }) => {
             reader.readAsDataURL(image)                                  
     }
 
+
+    //NEXT: display minutes of prep time, display cook time, prevent duplication of code
     return <section>
         <h2>{recipeName}</h2>
         <p>Updated: {timeStamp}</p>
         {image ? <img src={displayImage} alt={recipeName || 'recipe image'} /> : <p>{recipeName}</p>}        
         {prepTime && <p>Preparation time: {prepObject.hours.length>0 && `${prepObject.hours}h`} {prepObject.mins.length && `${prepObject.mins}m`} </p>}
-        {cookTime && <p>Cook time: {cookTime}</p>}        
+        {cookTime && <p>Cook time: {cookObject.hours.length>0 && `${cookObject.hours}h`} {cookObject.mins.length && `${cookObject.mins}m`}</p>}        
 
     </section>
 }
