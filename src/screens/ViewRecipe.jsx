@@ -43,6 +43,14 @@ const ViewRecipe = () => {
         })
             }</div> 
         }
+        {description && <p>{description}</p>}
+        {ingredients.length>0 && 
+        <div><p>Ingredients:</p> {
+            ingredients.map((ingredient, index) => {
+                return <p key={index}>-{ingredient}</p>
+            })
+        }
+        </div>}
     </main>
 }
 
