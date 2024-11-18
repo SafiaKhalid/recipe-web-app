@@ -19,7 +19,13 @@ const RecipeCard = ({ recipe }) => {
         }
         if ((prepObject.hours) == '0') {
             prepObject['hours'] = ''
-        }        
+        }
+        if (prepObject.mins[0] == '0') {
+            prepObject['mins'] = prepObject.mins[1]
+        }
+        if ((prepObject.mins) == '0') {
+            prepObject['mins'] = ''
+        }         
     }
 
     if (cookTime) {
@@ -30,6 +36,12 @@ const RecipeCard = ({ recipe }) => {
         }
         if ((cookObject.hours) == '0') {
             cookObject['hours'] = ''
+        }
+        if (cookObject.mins[0] == '0') {
+            cookObject['mins'] = cookObject.mins[1]
+        }
+        if ((cookObject.mins) == '0') {
+            cookObject['mins'] = ''
         }        
     }
      
