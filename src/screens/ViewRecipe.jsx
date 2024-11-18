@@ -51,6 +51,13 @@ const ViewRecipe = () => {
             })
         }
         </div>}
+        {method.length>0 && 
+        <div><p>Method:</p> {
+            method.map((step, index) => {
+                return <p key={index}>{index+1}) {step}</p>
+            })
+        }
+        </div>}
     </main>
 }
 
