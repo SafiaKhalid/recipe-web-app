@@ -4,7 +4,7 @@ import { useGlobalContext } from "../context"
 const ViewRecipe = () => {
     const { currentRecipe } = useGlobalContext()
     const focusRecipe = currentRecipe[0]
-    const { recipeName, timeStamp, image, prepTime, cookTime, servings, categories, description, ingredients, method, notes } = focusRecipe
+    const { id, recipeName, timeStamp, image, prepTime, cookTime, servings, categories, description, ingredients, method, notes } = focusRecipe
     const [displayImage, setDisplayImage] = useState(null)
     let reader = new FileReader()
     const prepObject = {hours: '', mins: ''}
