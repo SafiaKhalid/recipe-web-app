@@ -28,7 +28,7 @@ const AppProvider = ({ children }) => {
         dispatch({ type:'ADD_RECIPE', payload: newRecipe })
     }
 
-    const changeCurrentRecipe = async (currentRecipe) => {
+    const changeCurrentRecipe = async (currentRecipe) => {                
         try {
             await db.currentRecipe.clear()
             await db.currentRecipe.add(currentRecipe)
