@@ -13,7 +13,7 @@ const EditRecipe = () => {
     const [fileData, setFileData] = useState(recipeCopy.image)
     const [displayImage, setDisplayImage] = useState(null)
     const [ingredientFields, setIngredientFields] = useState(recipeCopy.ingredients)
-    const [newRecipe, setNewRecipe] = useState(recipeCopy.method)
+    const [newRecipe, setNewRecipe] = useState(recipeCopy)
     
     const categoryOptions = [
         {value: 'breakfast', label: 'Breakfast'},
@@ -54,7 +54,7 @@ const EditRecipe = () => {
         <form onSubmit={formSubmit}>
             <div>
                 <label htmlFor='recipe_name'>Recipe name</label>
-                <input type="text" id="recipe_name" value={newRecipe.recipeName} required></input>
+                <input type="text" id="recipe_name" defaultValue={newRecipe.recipeName} required></input>
             </div>
             <div>
                 {/*connect label to select component */}
@@ -63,25 +63,25 @@ const EditRecipe = () => {
             </div>
             <div>
                 <label htmlFor='prep_time'>Preparation time</label>
-                <input type="time" id="prep_time" name='prep_time' min='00:00' value={newRecipe.prepTime} ></input>
+                <input type="time" id="prep_time" name='prep_time' min='00:00' defaultValue={newRecipe.prepTime} ></input>
             </div>
             <div>
                 <label htmlFor='cook_time'>Cook time</label>
-                <input type="time" id="cook_time" name="cook_time" min='00:00' value={newRecipe.cookTime} ></input>
+                <input type="time" id="cook_time" name="cook_time" min='00:00' defaultValue={newRecipe.cookTime} ></input>
             </div>
             <div>
                 <label htmlFor='servings'>Servings</label>
-                <input type="number" id="servings"value={newRecipe.servings}></input>
+                <input type="number" id="servings" defaultValue={newRecipe.servings}></input>
             </div>
             <div>
                 <label htmlFor='description'>Description</label>
-                <textarea id="description" value={newRecipe.description}></textarea>
+                <textarea id="description" defaultValue={newRecipe.description}></textarea>
             </div>
             <MultiInput fields={ingredientFields} setFields={setIngredientFields} numbered={false} />
             <MultiInput fields={methodFields} setFields={setMethodFields} numbered={true} />
             <div>
                 <label htmlFor='notes'>Notes</label>
-                <textarea id="notes" value={newRecipe.notes}></textarea>
+                <textarea id="notes" defaultValue={newRecipe.notes}></textarea>
             </div>
             <div>
                 <p>Image</p>
