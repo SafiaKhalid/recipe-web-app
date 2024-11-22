@@ -95,7 +95,7 @@ const ViewRecipe = () => {
         }
         </div>}
         {notes && <p>Notes: {notes}</p>}
-        <button onClick={() => console.log('edit')}>
+        <button>
             <Link to='/edit'>
                 Edit
             </Link>
