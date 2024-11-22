@@ -49,7 +49,22 @@ const AppProvider = ({ children }) => {
         dispatch({ type:'DELETE_RECIPE', payload: recipe })
     }
 
-    return <AppContext.Provider value={{...state, addRecipe, changeCurrentRecipe, deleteRecipe}}>
+    const editRecipe = async (recipe) => {
+        console.log('Updated recipe: ', recipe);
+        
+        try {
+            await db.recipies.delete(recipe.id)
+            await db.recipies.add(recipe)
+            await db.currentRecipe.clear()
+            await db.currentRecipe.add(recipe)
+        } catch (error) {
+            console.error(error);            
+        }
+
+        dispatch({ type:'EDIT_RECIPE', payload: recipe })
+    }
+
+    return <AppContext.Provider value={{...state, addRecipe, changeCurrentRecipe, deleteRecipe, editRecipe}}>
         {children}
     </AppContext.Provider>
 }

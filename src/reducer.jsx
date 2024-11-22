@@ -20,6 +20,11 @@ const reducer = (state, action) => {
             return { ...state, currentRecipe: [action.payload] }
         case 'DELETE_RECIPE': {                       
             return { ...state, recipeList: state.recipeList.filter(recipe => recipe.id !== action.payload.id) }
+        }    
+        case 'EDIT_RECIPE':{
+            let copyList = [...state.recipeList]
+            copyList = copyList.filter(recipe => recipe.id !== action.payload.id).concat(action.payload)            
+            return { ...state, recipeList: [...copyList], currentRecipe: [action.payload]}
         }
         default:
             throw new Error('no matching type')

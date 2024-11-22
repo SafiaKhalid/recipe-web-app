@@ -5,7 +5,7 @@ import { useGlobalContext } from "../context"
 import MultiInput from "../components/MultiInput"
 
 const EditRecipe = () => {
-    const { currentRecipe } = useGlobalContext()
+    const { currentRecipe, editRecipe } = useGlobalContext()
     const recipeCopy = currentRecipe[0]
 
     const [selected, setSelected] = useState(recipeCopy.categories)
@@ -44,9 +44,16 @@ const EditRecipe = () => {
         reader.readAsDataURL(newRecipe.image)                                  
     }
 
-    const formSubmit = () => {
+    const formSubmit = (e) => {
         console.log('submit form');        
+        e.preventDefault()        
+        
+        editRecipe(newRecipe)
     }
+    
+    useEffect(() => {
+        setNewRecipe({...newRecipe, categories: selected})        
+    }, [selected])
 
     return <main>
         <h1>Edit Recipe</h1>
@@ -54,12 +61,12 @@ const EditRecipe = () => {
         <form onSubmit={formSubmit}>
             <div>
                 <label htmlFor='recipe_name'>Recipe name</label>
-                <input type="text" id="recipe_name" defaultValue={newRecipe.recipeName} required></input>
+                <input type="text" id="recipe_name" value={newRecipe.recipeName} onChange={e => setNewRecipe({...newRecipe, recipeName:e.target.value})} required></input>
             </div>
             <div>
                 {/*connect label to select component */}
                 <label /* htmlFor='category' */>Categories</label>                
-                <Select id="category" name="category" defaultValue={selected} /* value={selected} */ options={categoryOptions} onChange={setSelected} closeMenuOnSelect={false} isMulti required />
+                <Select id="category" name="category" value={selected} options={categoryOptions} onChange={setSelected} closeMenuOnSelect={false} isMulti required />
             </div>
             <div>
                 <label htmlFor='prep_time'>Preparation time</label>
