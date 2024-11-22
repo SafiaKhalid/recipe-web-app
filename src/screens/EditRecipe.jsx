@@ -1,4 +1,4 @@
-import { useState } from "react"
+import { useState, useEffect } from "react"
 import Select from "react-select"
 
 import { useGlobalContext } from "../context"
@@ -6,28 +6,15 @@ import MultiInput from "../components/MultiInput"
 
 const EditRecipe = () => {
     const { currentRecipe } = useGlobalContext()
+    const recipeCopy = currentRecipe[0]
+
     const [selected, setSelected] = useState(null)
     const [methodFields, setMethodFields] = useState([])
-    const [fileData, setFileData] = useState(null)
+    const [fileData, setFileData] = useState(recipeCopy.image)
     const [displayImage, setDisplayImage] = useState(null)
     const [ingredientFields, setIngredientFields] = useState([])
-    const [newRecipe, setNewRecipe] = useState({
-        id: null,
-        timeStamp: null,
-        image: null,
-        recipeName: null,
-        categories: [],
-        prepTime: null,
-        cookTime: null,
-        servings: null,
-        description: null,
-        ingredients: [],
-        method: [],
-        notes: null
-    })
-
-
-    const recipeCopy = currentRecipe[0]
+    const [newRecipe, setNewRecipe] = useState(recipeCopy)
+    
     const categoryOptions = [
         {value: 'breakfast', label: 'Breakfast'},
         {value: 'dessert', label: 'Dessert'},
@@ -49,6 +36,14 @@ const EditRecipe = () => {
         setFileData(file)                         
     }
 
+    reader.addEventListener('load', () => {                        
+        setDisplayImage(reader.result)          
+    }, false)
+    
+    if (newRecipe.image) {                        
+        reader.readAsDataURL(newRecipe.image)                                  
+    }
+
     const formSubmit = () => {
         console.log('submit form');        
     }
@@ -59,7 +54,7 @@ const EditRecipe = () => {
         <form onSubmit={formSubmit}>
             <div>
                 <label htmlFor='recipe_name'>Recipe name</label>
-                <input type="text" id="recipe_name" required></input>
+                <input type="text" id="recipe_name" value={newRecipe.recipeName} required></input>
             </div>
             <div>
                 {/*connect label to select component */}
@@ -68,25 +63,25 @@ const EditRecipe = () => {
             </div>
             <div>
                 <label htmlFor='prep_time'>Preparation time</label>
-                <input type="time" id="prep_time" name='prep_time' min='00:00'></input>
+                <input type="time" id="prep_time" name='prep_time' min='00:00' value={newRecipe.prepTime} ></input>
             </div>
             <div>
                 <label htmlFor='cook_time'>Cook time</label>
-                <input type="time" id="cook_time" name="cook_time" min='00:00'></input>
+                <input type="time" id="cook_time" name="cook_time" min='00:00' value={newRecipe.cookTime} ></input>
             </div>
             <div>
                 <label htmlFor='servings'>Servings</label>
-                <input type="number" id="servings"></input>
+                <input type="number" id="servings"value={newRecipe.servings}></input>
             </div>
             <div>
                 <label htmlFor='description'>Description</label>
-                <textarea id="description"></textarea>
+                <textarea id="description" value={newRecipe.description}></textarea>
             </div>
             <MultiInput fields={ingredientFields} setFields={setIngredientFields} numbered={false} />
             <MultiInput fields={methodFields} setFields={setMethodFields} numbered={true} />
             <div>
                 <label htmlFor='notes'>Notes</label>
-                <textarea id="notes"></textarea>
+                <textarea id="notes" value={newRecipe.notes}></textarea>
             </div>
             <div>
                 <p>Image</p>

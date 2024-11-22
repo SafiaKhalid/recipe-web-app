@@ -52,7 +52,7 @@ const ViewRecipe = () => {
     }, false)
     
     if (image) {                        
-            reader.readAsDataURL(image)                                  
+        reader.readAsDataURL(image)                                  
     }
     
     return <main>
