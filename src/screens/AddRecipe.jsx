@@ -62,8 +62,8 @@ const AddRecipe = () => {
             cookTime: e.target.cook_time.value,
             servings: e.target.servings.value,
             description: e.target.description.value,
-            ingredients: ingredientFields.map(listItem => listItem.item),
-            method: methodFields.map(listItem => listItem.item),
+            ingredients: ingredientFields,
+            method: methodFields,
             notes: e.target.notes.value,
         })
 

@@ -9,11 +9,11 @@ const EditRecipe = () => {
     const recipeCopy = currentRecipe[0]
 
     const [selected, setSelected] = useState(recipeCopy.categories)
-    const [methodFields, setMethodFields] = useState([])
+    const [methodFields, setMethodFields] = useState(recipeCopy.method)
     const [fileData, setFileData] = useState(recipeCopy.image)
     const [displayImage, setDisplayImage] = useState(null)
-    const [ingredientFields, setIngredientFields] = useState([])
-    const [newRecipe, setNewRecipe] = useState(recipeCopy)
+    const [ingredientFields, setIngredientFields] = useState(recipeCopy.ingredients)
+    const [newRecipe, setNewRecipe] = useState(recipeCopy.method)
     
     const categoryOptions = [
         {value: 'breakfast', label: 'Breakfast'},
