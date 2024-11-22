@@ -8,7 +8,7 @@ const EditRecipe = () => {
     const { currentRecipe } = useGlobalContext()
     const recipeCopy = currentRecipe[0]
 
-    const [selected, setSelected] = useState(null)
+    const [selected, setSelected] = useState(recipeCopy.categories)
     const [methodFields, setMethodFields] = useState([])
     const [fileData, setFileData] = useState(recipeCopy.image)
     const [displayImage, setDisplayImage] = useState(null)
@@ -59,7 +59,7 @@ const EditRecipe = () => {
             <div>
                 {/*connect label to select component */}
                 <label /* htmlFor='category' */>Categories</label>                
-                <Select id="category" name="category" value={selected} options={categoryOptions} onChange={setSelected} isMulti required />
+                <Select id="category" name="category" defaultValue={selected} /* value={selected} */ options={categoryOptions} onChange={setSelected} closeMenuOnSelect={false} isMulti required />
             </div>
             <div>
                 <label htmlFor='prep_time'>Preparation time</label>

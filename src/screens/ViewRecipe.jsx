@@ -13,6 +13,9 @@ const ViewRecipe = () => {
     const [displayImage, setDisplayImage] = useState(null)
     const [modalDisplay, setModalDisplay] = useState(false)
     
+    console.log(focusRecipe.categories);
+    
+
     if (prepTime) {
         prepObject['hours'] = prepTime.slice(0,2)
         prepObject['mins'] = prepTime.slice(3)
@@ -75,7 +78,7 @@ const ViewRecipe = () => {
         {categories.length>0 && 
         <div><p>Categories:</p> {
             categories.map((category, index) => {
-                return <p key={index}>{category}</p>
+                return <p key={index}>{category.value}</p>
         })
             }</div> 
         }

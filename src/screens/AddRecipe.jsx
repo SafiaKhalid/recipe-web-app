@@ -57,7 +57,7 @@ const AddRecipe = () => {
             timeStamp: date,
             image: (fileData || null),
             recipeName: e.target.recipe_name.value,
-            categories: selected.map(item => item.value),
+            categories: selected,
             prepTime: e.target.prep_time.value,
             cookTime: e.target.cook_time.value,
             servings: e.target.servings.value,
@@ -106,7 +106,7 @@ const AddRecipe = () => {
             <div>
                 {/*connect label to select component */}
                 <label /* htmlFor='category' */>Categories</label>                
-                <Select id="category" name="category" value={selected} options={categoryOptions} onChange={setSelected} isMulti required />
+                <Select id="category" name="category" value={selected} options={categoryOptions} onChange={setSelected} closeMenuOnSelect={false} isMulti required />
             </div>
             <div>
                 <label htmlFor='prep_time'>Preparation time</label>
