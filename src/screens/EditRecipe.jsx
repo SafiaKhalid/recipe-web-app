@@ -70,25 +70,31 @@ const EditRecipe = () => {
             </div>
             <div>
                 <label htmlFor='prep_time'>Preparation time</label>
-                <input type="time" id="prep_time" name='prep_time' min='00:00' defaultValue={newRecipe.prepTime} ></input>
+                {newRecipe.prepTime ? 
+                    <input type="time" id="prep_time" name='prep_time' min='00:00' value={newRecipe.prepTime} onChange={e => setNewRecipe({...newRecipe, prepTime:e.target.value})} ></input> :
+                    <input type="time" id="prep_time" name='prep_time' min='00:00' defaultValue={newRecipe.prepTime} onChange={e => setNewRecipe({...newRecipe, prepTime:e.target.value})} ></input>
+                }                
             </div>
             <div>
                 <label htmlFor='cook_time'>Cook time</label>
-                <input type="time" id="cook_time" name="cook_time" min='00:00' defaultValue={newRecipe.cookTime} ></input>
+                {newRecipe.cookTime ? 
+                    <input type="time" id="cook_time" name='cook_time' min='00:00' value={newRecipe.cookTime} onChange={e => setNewRecipe({...newRecipe, cookTime:e.target.value})} ></input> :
+                    <input type="time" id="cook_time" name='cook_time' min='00:00' defaultValue={newRecipe.cookTime} onChange={e => setNewRecipe({...newRecipe, cookTime:e.target.value})} ></input>
+                }
             </div>
             <div>
                 <label htmlFor='servings'>Servings</label>
-                <input type="number" id="servings" defaultValue={newRecipe.servings}></input>
+                <input type="number" id="servings" value={newRecipe.servings} onChange={e => setNewRecipe({...newRecipe, servings:e.target.value})}></input>
             </div>
             <div>
                 <label htmlFor='description'>Description</label>
-                <textarea id="description" defaultValue={newRecipe.description}></textarea>
+                <textarea id="description" value={newRecipe.description} onChange={e => setNewRecipe({...newRecipe, description:e.target.value})}></textarea>
             </div>
             <MultiInput fields={ingredientFields} setFields={setIngredientFields} numbered={false} />
             <MultiInput fields={methodFields} setFields={setMethodFields} numbered={true} />
             <div>
                 <label htmlFor='notes'>Notes</label>
-                <textarea id="notes" defaultValue={newRecipe.notes}></textarea>
+                <textarea id="notes" value={newRecipe.notes} onChange={e => setNewRecipe({...newRecipe, notes:e.target.value})}></textarea>
             </div>
             <div>
                 <p>Image</p>
