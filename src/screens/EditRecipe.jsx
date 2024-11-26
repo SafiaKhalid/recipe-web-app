@@ -40,20 +40,19 @@ const EditRecipe = () => {
         setDisplayImage(reader.result)          
     }, false)
     
-    if (newRecipe.image) {                        
-        reader.readAsDataURL(newRecipe.image)                                  
+    if (fileData) {                        
+        reader.readAsDataURL(fileData)                                  
     }
 
-    const formSubmit = (e) => {
-        console.log('submit form');        
+    const formSubmit = (e) => {            
         e.preventDefault()        
         
         editRecipe(newRecipe)
     }
     
     useEffect(() => {
-        setNewRecipe({...newRecipe, categories: selected, ingredients: ingredientFields, method: methodFields})        
-    }, [selected, ingredientFields, methodFields])
+        setNewRecipe({...newRecipe, categories: selected, ingredients: ingredientFields, method: methodFields, image: (fileData || null),})        
+    }, [selected, ingredientFields, methodFields, fileData])
 
     return <main>
         <h1>Edit Recipe</h1>
