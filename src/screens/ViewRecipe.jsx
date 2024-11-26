@@ -7,8 +7,8 @@ const ViewRecipe = () => {
     const focusRecipe = currentRecipe[0]
     const { recipeName, timeStamp, image, prepTime, cookTime, servings, categories, description, ingredients, method, notes } = focusRecipe    
     let reader = new FileReader()
-    const prepObject = {hours: '', mins: ''}
-    const cookObject = {hours: '', mins: ''}
+    let prepObject = {hours: '', mins: ''}
+    let cookObject = {hours: '', mins: ''}
 
     const [displayImage, setDisplayImage] = useState(null)
     const [modalDisplay, setModalDisplay] = useState(false)    
@@ -27,7 +27,16 @@ const ViewRecipe = () => {
         }
         if ((prepObject.mins) == '0') {
             prepObject['mins'] = ''
-        }        
+        }     
+
+ /*        if (Object.values(prepObject).filter(e => e !== '').length < 1) {
+            prepObject = {}
+        }
+ */
+        console.log(prepObject);
+        
+        
+           
     }
 
     if (cookTime) {
@@ -69,8 +78,8 @@ const ViewRecipe = () => {
         <p>Recipe name: {recipeName}</p>
         <p>Date added: {timeStamp}</p>
         {image ? <img src={displayImage} alt={recipeName || 'recipe image'} /> : <p>{recipeName}</p>}        
-        {prepTime && <p>Preparation time: {prepObject.hours.length>0 && `${prepObject.hours}h`} {prepObject.mins.length && `${prepObject.mins}m`} </p>}
-        {cookTime && <p>Cook time: {cookObject.hours.length>0 && `${cookObject.hours}h`} {cookObject.mins.length && `${cookObject.mins}m`}</p>}        
+        {Object.values(prepObject).filter(e => e !== '').length > 0 && <p>Preparation time: {prepObject.hours.length>0 && `${prepObject.hours}h`} {prepObject.mins.length>0 && `${prepObject.mins}m`} </p>}
+        {Object.values(cookObject).filter(e => e !== '').length > 0 && <p>Cook time: {cookObject.hours.length>0 && `${cookObject.hours}h`} {cookObject.mins.length>0 && `${cookObject.mins}m`}</p>}        
         {servings && <p>Servings: {servings}</p>}        
         {categories.length>0 && 
         <div><p>Categories:</p> {
