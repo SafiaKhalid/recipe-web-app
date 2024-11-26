@@ -27,16 +27,7 @@ const ViewRecipe = () => {
         }
         if ((prepObject.mins) == '0') {
             prepObject['mins'] = ''
-        }     
-
- /*        if (Object.values(prepObject).filter(e => e !== '').length < 1) {
-            prepObject = {}
-        }
- */
-        console.log(prepObject);
-        
-        
-           
+        }                
     }
 
     if (cookTime) {
