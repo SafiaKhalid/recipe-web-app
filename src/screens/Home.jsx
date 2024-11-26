@@ -5,6 +5,7 @@ import RecipeCard from "../components/RecipeCard"
 
 const Home = () => {
     const { recipeList } = useGlobalContext()
+    const recipeCopy = [...recipeList]
 
     return <main>
         <h1>Recipes</h1>
@@ -14,7 +15,7 @@ const Home = () => {
                         Add recipe
                     </Link>                    
                 </button>
-                {recipeList.map((recipe) => {
+                {recipeCopy.map((recipe) => {
                     return <RecipeCard key={recipe.id} recipe={recipe} />
                 })}             
             </section>
