@@ -45,7 +45,6 @@ const RecipeCard = ({ recipe }) => {
         }        
     }
      
-
     reader.addEventListener('load', () => {                        
         setDisplayImage(reader.result)          
     }, false)

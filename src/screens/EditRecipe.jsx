@@ -45,8 +45,7 @@ const EditRecipe = () => {
     }
 
     const formSubmit = (e) => {            
-        e.preventDefault()        
-        
+        e.preventDefault()                
         editRecipe(newRecipe)
     }
     

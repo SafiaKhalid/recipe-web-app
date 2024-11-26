@@ -50,7 +50,7 @@ const AppProvider = ({ children }) => {
     }
 
     const editRecipe = async (recipe) => {
-        console.log('Updated recipe: ', recipe);
+        /* console.log('Updated recipe: ', recipe); */
         
         try {
             await db.recipies.delete(recipe.id)
