@@ -59,8 +59,8 @@ const RecipeCard = ({ recipe }) => {
             <h2>{recipeName}</h2>
             <p>Updated: {timeStamp}</p>
             {image ? <img src={displayImage} alt={recipeName || 'recipe image'} /> : <p>{recipeName}</p>}        
-            {prepTime && <p>Preparation time: {prepObject.hours.length>0 && `${prepObject.hours}h`} {prepObject.mins.length && `${prepObject.mins}m`} </p>}
-            {cookTime && <p>Cook time: {cookObject.hours.length>0 && `${cookObject.hours}h`} {cookObject.mins.length && `${cookObject.mins}m`}</p>}        
+            {prepTime && <p>Preparation time: {prepObject.hours.length>0 && `${prepObject.hours}h`} {prepObject.mins.length>0 && `${prepObject.mins}m`} </p>}
+            {cookTime && <p>Cook time: {cookObject.hours.length>0 && `${cookObject.hours}h`} {cookObject.mins.length>0 && `${cookObject.mins}m`}</p>}        
         </Link>
     </button>
 }
