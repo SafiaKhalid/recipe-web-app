@@ -1,9 +1,15 @@
-const Ingredients = ({ fields, setFields, numbered }) => {    
+import { useEffect } from "react"
+
+const MultiInput = ({ fields, setFields, numbered }) => {    
     const handleChange = (index, e) => {        
         let newFields = [...fields]
-        newFields[index][e.target.name] = e.target.value
-        setFields(newFields)
+        newFields[index][e.target.name] = e.target.value        
+        setFields(newFields)                            
     }
+
+    useEffect(() => {
+        console.log('fields:', fields);        
+    }, [fields])
 
     const addField = () => {        
         setFields([...fields, {item: ''}])                   
@@ -28,4 +34,4 @@ const Ingredients = ({ fields, setFields, numbered }) => {
     </fieldset>
 }
 
-export default Ingredients
+export default MultiInput

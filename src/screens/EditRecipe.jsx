@@ -52,8 +52,8 @@ const EditRecipe = () => {
     }
     
     useEffect(() => {
-        setNewRecipe({...newRecipe, categories: selected})        
-    }, [selected])
+        setNewRecipe({...newRecipe, categories: selected, ingredients: ingredientFields, method: methodFields})        
+    }, [selected, ingredientFields, methodFields])
 
     return <main>
         <h1>Edit Recipe</h1>
@@ -90,6 +90,7 @@ const EditRecipe = () => {
                 <label htmlFor='description'>Description</label>
                 <textarea id="description" value={newRecipe.description} onChange={e => setNewRecipe({...newRecipe, description:e.target.value})}></textarea>
             </div>
+            
             <MultiInput fields={ingredientFields} setFields={setIngredientFields} numbered={false} />
             <MultiInput fields={methodFields} setFields={setMethodFields} numbered={true} />
             <div>
