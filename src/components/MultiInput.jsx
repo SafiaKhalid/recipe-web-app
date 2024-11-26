@@ -1,8 +1,8 @@
-const Ingredients = ({ fields, setFields, numbered }) => {    
+const MultiInput = ({ fields, setFields, numbered }) => {    
     const handleChange = (index, e) => {        
         let newFields = [...fields]
-        newFields[index][e.target.name] = e.target.value
-        setFields(newFields)
+        newFields[index][e.target.name] = e.target.value        
+        setFields(newFields)                            
     }
 
     const addField = () => {        
@@ -28,4 +28,4 @@ const Ingredients = ({ fields, setFields, numbered }) => {
     </fieldset>
 }
 
-export default Ingredients
+export default MultiInput

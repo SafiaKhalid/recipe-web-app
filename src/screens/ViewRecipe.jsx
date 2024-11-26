@@ -7,12 +7,12 @@ const ViewRecipe = () => {
     const focusRecipe = currentRecipe[0]
     const { recipeName, timeStamp, image, prepTime, cookTime, servings, categories, description, ingredients, method, notes } = focusRecipe    
     let reader = new FileReader()
-    const prepObject = {hours: '', mins: ''}
-    const cookObject = {hours: '', mins: ''}
+    let prepObject = {hours: '', mins: ''}
+    let cookObject = {hours: '', mins: ''}
 
     const [displayImage, setDisplayImage] = useState(null)
-    const [modalDisplay, setModalDisplay] = useState(false)
-    
+    const [modalDisplay, setModalDisplay] = useState(false)    
+
     if (prepTime) {
         prepObject['hours'] = prepTime.slice(0,2)
         prepObject['mins'] = prepTime.slice(3)
@@ -27,7 +27,7 @@ const ViewRecipe = () => {
         }
         if ((prepObject.mins) == '0') {
             prepObject['mins'] = ''
-        }        
+        }                
     }
 
     if (cookTime) {
@@ -52,7 +52,7 @@ const ViewRecipe = () => {
     }, false)
     
     if (image) {                        
-            reader.readAsDataURL(image)                                  
+        reader.readAsDataURL(image)                                  
     }
     
     return <main>
@@ -69,13 +69,13 @@ const ViewRecipe = () => {
         <p>Recipe name: {recipeName}</p>
         <p>Date added: {timeStamp}</p>
         {image ? <img src={displayImage} alt={recipeName || 'recipe image'} /> : <p>{recipeName}</p>}        
-        {prepTime && <p>Preparation time: {prepObject.hours.length>0 && `${prepObject.hours}h`} {prepObject.mins.length && `${prepObject.mins}m`} </p>}
-        {cookTime && <p>Cook time: {cookObject.hours.length>0 && `${cookObject.hours}h`} {cookObject.mins.length && `${cookObject.mins}m`}</p>}        
+        {Object.values(prepObject).filter(e => e !== '').length > 0 && <p>Preparation time: {prepObject.hours.length>0 && `${prepObject.hours}h`} {prepObject.mins.length>0 && `${prepObject.mins}m`} </p>}
+        {Object.values(cookObject).filter(e => e !== '').length > 0 && <p>Cook time: {cookObject.hours.length>0 && `${cookObject.hours}h`} {cookObject.mins.length>0 && `${cookObject.mins}m`}</p>}        
         {servings && <p>Servings: {servings}</p>}        
         {categories.length>0 && 
         <div><p>Categories:</p> {
             categories.map((category, index) => {
-                return <p key={index}>{category}</p>
+                return <p key={index}>{category.value}</p>
         })
             }</div> 
         }
@@ -83,20 +83,24 @@ const ViewRecipe = () => {
         {ingredients.length>0 && 
         <div><p>Ingredients:</p> {
             ingredients.map((ingredient, index) => {
-                return <p key={index}>-{ingredient}</p>
+                return <p key={index}>-{ingredient.item}</p>
             })
         }
         </div>}
         {method.length>0 && 
         <div><p>Method:</p> {
             method.map((step, index) => {
-                return <p key={index}>{index+1}) {step}</p>
+                return <p key={index}>{index+1}) {step.item}</p>
             })
         }
         </div>}
         {notes && <p>Notes: {notes}</p>}
-        <button onClick={() => setModalDisplay(!modalDisplay)
-        }>
+        <button>
+            <Link to='/edit'>
+                Edit
+            </Link>
+        </button>
+        <button onClick={() => setModalDisplay(!modalDisplay)}>
             Delete
         </button>
     </main>
