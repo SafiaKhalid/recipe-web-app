@@ -53,12 +53,22 @@ const Home = () => {
     }, [sortOption])
 
     useEffect(() => {
-        console.log('filterCheck: ', filterCheck);        
+        console.log('filterCheck: ', filterCheck);
+        const categoryList = Object.keys(filterCheck).filter(key => filterCheck[key] === true)     
+        console.log('categoryList: ', categoryList);           
+        setRecipeCopy([...recipeList].filter(recipe => {
+            let recipeCategories = []
+            recipe.categories.forEach((category) => {
+                recipeCategories.push(category.value)
+            })            
+            
+            return categoryList.every(category => recipeCategories.includes(category))
+        }))
     }, [filterCheck])
     
     return <main>
         <h1>Recipes</h1>
-        {recipeCopy.length > 0 ? <section>
+        {recipeList.length > 0 ? <section>
                 <button>
                     <Link to='/add'>
                         Add recipe
