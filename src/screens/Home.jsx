@@ -27,6 +27,10 @@ const Home = () => {
         setFilterCheck({...filterCheck, [filterCat]: !filterCheck[filterCat]})
     }
 
+    const filterClear = () => {
+        console.log('clear');        
+    }
+
     useEffect(() => {
         switch (sortOption) {
             case 'dateDes':
@@ -52,10 +56,9 @@ const Home = () => {
         }        
     }, [sortOption])
 
-    useEffect(() => {
-        console.log('filterCheck: ', filterCheck);
+    useEffect(() => {        
         const categoryList = Object.keys(filterCheck).filter(key => filterCheck[key] === true)     
-        console.log('categoryList: ', categoryList);           
+
         setRecipeCopy([...recipeList].filter(recipe => {
             let recipeCategories = []
             recipe.categories.forEach((category) => {
@@ -101,6 +104,7 @@ const Home = () => {
                     <label htmlFor="snacks">Snacks</label>
                     <input type="checkbox" name="other" id="other" value='other' onChange={filterHandle} />
                     <label htmlFor="other">Other</label>
+                    <button onClick={filterClear}>Clear</button>
                 </div>
                 {recipeCopy.map((recipe) => {
                     return <RecipeCard key={recipe.id} recipe={recipe} />
