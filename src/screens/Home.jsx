@@ -28,7 +28,16 @@ const Home = () => {
     }
 
     const filterClear = () => {
-        console.log('clear');        
+        console.log('clear')
+        setFilterCheck({
+            breakfast: false,
+            dessert: false,
+            dinner: false,
+            drinks: false,
+            lunch: false,
+            snacks: false,
+            other: false,
+        })    
     }
 
     useEffect(() => {
@@ -90,19 +99,19 @@ const Home = () => {
                 </div>
                 <div>
                     <p>Filter</p>
-                    <input type="checkbox" name="breakfast" id="breakfast" value='breakfast' /* checked={filterCheck.breakfast} */ onChange={filterHandle} />
+                    <input type="checkbox" name="breakfast" id="breakfast" value='breakfast' checked={filterCheck.breakfast} onChange={filterHandle} />
                     <label htmlFor="breakfast">Breakfast</label>
-                    <input type="checkbox" name="dessert" id="dessert" value='dessert' onChange={filterHandle} />
+                    <input type="checkbox" name="dessert" id="dessert" value='dessert' checked={filterCheck.dessert} onChange={filterHandle} />
                     <label htmlFor="dessert">Dessert</label>
-                    <input type="checkbox" name="dinner" id="dinner" value='dinner' onChange={filterHandle} />
+                    <input type="checkbox" name="dinner" id="dinner" value='dinner' checked={filterCheck.dinner} onChange={filterHandle} />
                     <label htmlFor="dinner">Dinner</label>
-                    <input type="checkbox" name="drinks" id="drinks" value='drinks' onChange={filterHandle} />
+                    <input type="checkbox" name="drinks" id="drinks" value='drinks' checked={filterCheck.drinks} onChange={filterHandle} />
                     <label htmlFor="drinks">Drinks</label>
-                    <input type="checkbox" name="lunch" id="lunch" value='lunch' onChange={filterHandle} />
+                    <input type="checkbox" name="lunch" id="lunch" value='lunch' checked={filterCheck.lunch} onChange={filterHandle} />
                     <label htmlFor="lunch">Lunch</label>
-                    <input type="checkbox" name="snacks" id="snacks" value='snacks' onChange={filterHandle} />
+                    <input type="checkbox" name="snacks" id="snacks" value='snacks' checked={filterCheck.snacks} onChange={filterHandle} />
                     <label htmlFor="snacks">Snacks</label>
-                    <input type="checkbox" name="other" id="other" value='other' onChange={filterHandle} />
+                    <input type="checkbox" name="other" id="other" value='other' checked={filterCheck.other} onChange={filterHandle} />
                     <label htmlFor="other">Other</label>
                     <button onClick={filterClear}>Clear</button>
                 </div>
