@@ -8,10 +8,24 @@ const Home = () => {
     const { recipeList } = useGlobalContext()
     const [sortOption, setSortOption] = useState('dateDes')
     const [recipeCopy, setRecipeCopy] = useState(recipeList)
+    const [filterCheck, setFilterCheck] = useState({
+        breakfast: false,
+        dessert: false,
+        dinner: false,
+        drinks: false,
+        lunch: false,
+        snacks: false,
+        other: false,
+    })    
 
     const sortHandle = (e) => {        
         setSortOption(e.target.value)
     }   
+
+    const filterHandle = (e) => {        
+        const filterCat = e.target.name              
+        setFilterCheck({...filterCheck, [filterCat]: !filterCheck[filterCat]})
+    }
 
     useEffect(() => {
         switch (sortOption) {
@@ -37,6 +51,10 @@ const Home = () => {
                 console.error('no matching sort option');                
         }        
     }, [sortOption])
+
+    useEffect(() => {
+        console.log('filterCheck: ', filterCheck);        
+    }, [filterCheck])
     
     return <main>
         <h1>Recipes</h1>
@@ -59,19 +77,19 @@ const Home = () => {
                 </div>
                 <div>
                     <p>Filter</p>
-                    <input type="checkbox" name="breakfast" id="breakfast" value='breakfast' />
+                    <input type="checkbox" name="breakfast" id="breakfast" value='breakfast' /* checked={filterCheck.breakfast} */ onChange={filterHandle} />
                     <label htmlFor="breakfast">Breakfast</label>
-                    <input type="checkbox" name="dessert" id="dessert" value='dessert' />
+                    <input type="checkbox" name="dessert" id="dessert" value='dessert' onChange={filterHandle} />
                     <label htmlFor="dessert">Dessert</label>
-                    <input type="checkbox" name="dinner" id="dinner" value='dinner' />
+                    <input type="checkbox" name="dinner" id="dinner" value='dinner' onChange={filterHandle} />
                     <label htmlFor="dinner">Dinner</label>
-                    <input type="checkbox" name="drinks" id="drinks" value='drinks' />
+                    <input type="checkbox" name="drinks" id="drinks" value='drinks' onChange={filterHandle} />
                     <label htmlFor="drinks">Drinks</label>
-                    <input type="checkbox" name="lunch" id="lunch" value='lunch' />
+                    <input type="checkbox" name="lunch" id="lunch" value='lunch' onChange={filterHandle} />
                     <label htmlFor="lunch">Lunch</label>
-                    <input type="checkbox" name="snacks" id="snacks" value='snacks' />
+                    <input type="checkbox" name="snacks" id="snacks" value='snacks' onChange={filterHandle} />
                     <label htmlFor="snacks">Snacks</label>
-                    <input type="checkbox" name="other" id="other" value='other' />
+                    <input type="checkbox" name="other" id="other" value='other' onChange={filterHandle} />
                     <label htmlFor="other">Other</label>
                 </div>
                 {recipeCopy.map((recipe) => {
