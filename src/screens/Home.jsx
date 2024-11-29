@@ -45,7 +45,7 @@ const Home = () => {
                     <Link to='/add'>
                         Add recipe
                     </Link>                    
-                </button>
+                </button>                
                 <div>
                     <label htmlFor="sort">Sort</label>
                     <select name="sort" id="sort" onChange={sortHandle}>
@@ -56,6 +56,23 @@ const Home = () => {
                         <option value="timeAsc">Time (ascending)</option>
                         <option value="timeDes">Time (descending)</option>
                     </select>
+                </div>
+                <div>
+                    <p>Filter</p>
+                    <input type="checkbox" name="breakfast" id="breakfast" value='breakfast' />
+                    <label htmlFor="breakfast">Breakfast</label>
+                    <input type="checkbox" name="dessert" id="dessert" value='dessert' />
+                    <label htmlFor="dessert">Dessert</label>
+                    <input type="checkbox" name="dinner" id="dinner" value='dinner' />
+                    <label htmlFor="dinner">Dinner</label>
+                    <input type="checkbox" name="drinks" id="drinks" value='drinks' />
+                    <label htmlFor="drinks">Drinks</label>
+                    <input type="checkbox" name="lunch" id="lunch" value='lunch' />
+                    <label htmlFor="lunch">Lunch</label>
+                    <input type="checkbox" name="snacks" id="snacks" value='snacks' />
+                    <label htmlFor="snacks">Snacks</label>
+                    <input type="checkbox" name="other" id="other" value='other' />
+                    <label htmlFor="other">Other</label>
                 </div>
                 {recipeCopy.map((recipe) => {
                     return <RecipeCard key={recipe.id} recipe={recipe} />
