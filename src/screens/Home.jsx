@@ -3,6 +3,7 @@ import { Link } from "react-router-dom"
 
 import { useGlobalContext } from "../context"
 import RecipeCard from "../components/RecipeCard"
+import '../stylesheets/home.css'
 
 const Home = () => {
     const { recipeList } = useGlobalContext()
@@ -80,7 +81,7 @@ const Home = () => {
     
     return <main>
         <h1>Recipes</h1>
-        {recipeList.length > 0 ? <section>
+        {recipeList.length > 0 ? <section id="recipe-content">
                 <button>
                     <Link to='/add'>
                         Add recipe
