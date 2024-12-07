@@ -39,7 +39,7 @@ main > #recipe-content > #add-sort-container {
     border: none;
     font-size: 1.1em;    
     padding: 0.5em 0.75em;
-    border-radius: 5px;    
+    border-radius: 0.3em;    
 }
 
 #add-sort-container > #add-screen-button:hover {
@@ -81,7 +81,7 @@ main > #recipe-content > #add-sort-container {
     max-height: 30ch;
     background-color: var(--primary);
     padding: 0.25em 0.5em;
-    border-radius: 4px;                
+    border-radius: 0.3em;                
     cursor: pointer;
     line-height: 1.1;
     font-size: 1rem;    
@@ -117,12 +117,13 @@ main > #recipe-content > #add-sort-container {
 #filter-container > p {
     color: var(--primary);
     font-size: 1.5em;
+    font-weight: bold;
 }
 
 #filter-container > #filter-options {
     display: grid;
     column-gap: 0.2em;
-    grid-template-columns: repeat(3, minmax(0, 1fr));
+    grid-template-columns: repeat(3, minmax(0, 1fr));    
 }
 
 #filter-options > .checkbox {
@@ -130,6 +131,7 @@ main > #recipe-content > #add-sort-container {
     align-items: center;
     gap: 0.2em;
     margin-bottom: 0.2em;
+    font-weight: normal;    
 }
 
 .checkbox > input[type=checkbox] {
@@ -155,3 +157,16 @@ main > #recipe-content > #add-sort-container {
 .checkbox > input[type=checkbox]:checked:hover {
     outline: var(--tertiary) solid 0.2em;
 } 
+
+#filter-container > #clear-btn {
+    background: var(--primary);
+    padding: 0.5em;
+    font-size: 1.25em;    
+    border-radius: 0.4em;
+    color: var(--secondary);
+    border: none;    
+}
+
+#filter-container > #clear-btn:hover {
+    outline: solid 0.2em var(--tertiary);
+}

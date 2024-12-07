@@ -110,43 +110,38 @@ const Home = () => {
                             <span  className="checkmark"></span>
                             Breakfast
                         </label>
-                        {/* <div className="checkbox">
-                            <input type="checkbox" name="breakfast" id="breakfast" value='breakfast' checked={filterCheck.breakfast} onChange={filterHandle} />
-                            <span  className="checkmark"></span>
-                            <label htmlFor="breakfast">Breakfast</label>
-                        </div> */}
-                        <div className="checkbox">
+                        <label className="checkbox">
                             <input type="checkbox" name="dessert" id="dessert" value='dessert' checked={filterCheck.dessert} onChange={filterHandle} />
                             <span  className="checkmark"></span>
-                            <label htmlFor="dessert">Dessert</label>
-                        </div>
-                        <div className="checkbox">
+                            Dessert
+                        </label>
+                        <label className="checkbox">
                             <input type="checkbox" name="dinner" id="dinner" value='dinner' checked={filterCheck.dinner} onChange={filterHandle} />
                             <span  className="checkmark"></span>
-                            <label htmlFor="dinner">Dinner</label>
-                        </div>
-                        <div className="checkbox">
+                            Dinner
+                        </label>
+                        <label className="checkbox">
                             <input type="checkbox" name="drinks" id="drinks" value='drinks' checked={filterCheck.drinks} onChange={filterHandle} />
                             <span  className="checkmark"></span>
-                            <label htmlFor="drinks">Drinks</label>
-                        </div>
-                        <div className="checkbox">
+                            Drinks
+                        </label>
+                        <label className="checkbox">
                             <input type="checkbox" name="lunch" id="lunch" value='lunch' checked={filterCheck.lunch} onChange={filterHandle} />
                             <span  className="checkmark"></span>
-                            <label htmlFor="lunch">Lunch</label>
-                        </div>
-                        <div className="checkbox">
+                            Lunch
+                        </label>
+                        <label className="checkbox">
                             <input type="checkbox" name="snacks" id="snacks" value='snacks' checked={filterCheck.snacks} onChange={filterHandle} />
                             <span  className="checkmark"></span>
-                            <label htmlFor="snacks">Snacks</label>
-                        </div>
-                        <div className="checkbox">
+                            Snacks
+                        </label>
+                        <label className="checkbox">
                             <input type="checkbox" name="other" id="other" value='other' checked={filterCheck.other} onChange={filterHandle} />
                             <span  className="checkmark"></span>
-                            <label htmlFor="other">Other</label>
-                        </div>
+                            Other
+                        </label>                                                                    
                     </div>
-                    <button onClick={filterClear}>Clear</button>
+                    <button id="clear-btn" onClick={filterClear}>Clear filters</button>
                 </div>
                 {recipeCopy.map((recipe) => {
                     return <RecipeCard key={recipe.id} recipe={recipe} />
