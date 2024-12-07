@@ -80,40 +80,60 @@ const Home = () => {
     }, [filterCheck])
     
     return <main>
-        <h1>Recipes</h1>
+        <h1>My Recipes</h1>
         {recipeList.length > 0 ? <section id="recipe-content">
-                <button>
+            <div id="add-sort-container">
+                <button id="add-screen-button">
                     <Link to='/add'>
                         Add recipe
                     </Link>                    
                 </button>                
-                <div>
-                    <label htmlFor="sort">Sort</label>
-                    <select name="sort" id="sort" onChange={sortHandle}>
-                        <option value="dateDes">Date (newest)</option>
-                        <option value="dateAsc">Date (oldest)</option>
-                        <option value="aToZ">A - Z</option>
-                        <option value="zToA">Z - A</option>
-                        <option value="timeAsc">Time (ascending)</option>
-                        <option value="timeDes">Time (descending)</option>
-                    </select>
+                <div id="sort-label-container">
+                    <label htmlFor="sort">Sort by</label>
+                    <div id="sort-container">
+                        <select name="sort" id="sort" onChange={sortHandle}>
+                            <option value="dateDes">Date (newest)</option>
+                            <option value="dateAsc">Date (oldest)</option>
+                            <option value="aToZ">A - Z</option>
+                            <option value="zToA">Z - A</option>
+                            <option value="timeAsc">Time (ascending)</option>
+                            <option value="timeDes">Time (descending)</option>
+                        </select>
+                    </div>
                 </div>
-                <div>
+            </div>
+                <div id="filter-container">
                     <p>Filter</p>
-                    <input type="checkbox" name="breakfast" id="breakfast" value='breakfast' checked={filterCheck.breakfast} onChange={filterHandle} />
-                    <label htmlFor="breakfast">Breakfast</label>
-                    <input type="checkbox" name="dessert" id="dessert" value='dessert' checked={filterCheck.dessert} onChange={filterHandle} />
-                    <label htmlFor="dessert">Dessert</label>
-                    <input type="checkbox" name="dinner" id="dinner" value='dinner' checked={filterCheck.dinner} onChange={filterHandle} />
-                    <label htmlFor="dinner">Dinner</label>
-                    <input type="checkbox" name="drinks" id="drinks" value='drinks' checked={filterCheck.drinks} onChange={filterHandle} />
-                    <label htmlFor="drinks">Drinks</label>
-                    <input type="checkbox" name="lunch" id="lunch" value='lunch' checked={filterCheck.lunch} onChange={filterHandle} />
-                    <label htmlFor="lunch">Lunch</label>
-                    <input type="checkbox" name="snacks" id="snacks" value='snacks' checked={filterCheck.snacks} onChange={filterHandle} />
-                    <label htmlFor="snacks">Snacks</label>
-                    <input type="checkbox" name="other" id="other" value='other' checked={filterCheck.other} onChange={filterHandle} />
-                    <label htmlFor="other">Other</label>
+                    <div id="filter-options">
+                        <div className="checkbox">
+                            <input type="checkbox" name="breakfast" id="breakfast" value='breakfast' checked={filterCheck.breakfast} onChange={filterHandle} />
+                            <label htmlFor="breakfast">Breakfast</label>
+                        </div>
+                        <div className="checkbox">
+                            <input type="checkbox" name="dessert" id="dessert" value='dessert' checked={filterCheck.dessert} onChange={filterHandle} />
+                            <label htmlFor="dessert">Dessert</label>
+                        </div>
+                        <div className="checkbox">
+                            <input type="checkbox" name="dinner" id="dinner" value='dinner' checked={filterCheck.dinner} onChange={filterHandle} />
+                            <label htmlFor="dinner">Dinner</label>
+                        </div>
+                        <div className="checkbox">
+                            <input type="checkbox" name="drinks" id="drinks" value='drinks' checked={filterCheck.drinks} onChange={filterHandle} />
+                            <label htmlFor="drinks">Drinks</label>
+                        </div>
+                        <div className="checkbox">
+                            <input type="checkbox" name="lunch" id="lunch" value='lunch' checked={filterCheck.lunch} onChange={filterHandle} />
+                            <label htmlFor="lunch">Lunch</label>
+                        </div>
+                        <div className="checkbox">
+                            <input type="checkbox" name="snacks" id="snacks" value='snacks' checked={filterCheck.snacks} onChange={filterHandle} />
+                            <label htmlFor="snacks">Snacks</label>
+                        </div>
+                        <div className="checkbox">
+                            <input type="checkbox" name="other" id="other" value='other' checked={filterCheck.other} onChange={filterHandle} />
+                            <label htmlFor="other">Other</label>
+                        </div>
+                    </div>
                     <button onClick={filterClear}>Clear</button>
                 </div>
                 {recipeCopy.map((recipe) => {

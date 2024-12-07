@@ -1,0 +1,131 @@
+:root {
+    --background: #DD4258;
+    --primary: #710625;
+    --secondary: #FFF8E8;
+    --tertiary: #FCD581;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Outfit", sans-serif;
+    color: var(--secondary);
+}
+
+body {
+    background-color: var(--background);
+}
+
+body main {    
+    margin: 3em 2em;
+}
+
+main > h1 {
+    font-size: 2.5em;
+    margin-bottom: 0.5em;
+    color: var(--primary);  
+}
+
+main > #recipe-content > #add-sort-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;    
+    margin-bottom: 2em;
+}
+
+#add-sort-container > #add-screen-button {
+    background: var(--primary);
+    border: none;
+    font-size: 1.1em;    
+    padding: 0.5em 0.75em;
+    border-radius: 5px;    
+}
+
+#add-sort-container > #add-screen-button:hover {
+    outline: solid 2px var(--secondary);
+}
+
+#add-screen-button > a {
+    text-decoration: none;      
+}
+
+#add-sort-container > #sort-label-container {
+    display: flex;
+    gap: 0.5em;
+}
+
+#sort-label-container > label {
+    color: var(--primary);
+    white-space: nowrap;
+}
+
+#sort-container > select {
+    appearance: none;  
+    background-color: var(--primary);
+    border: none;
+    padding: 0 1em 0 0;
+    margin: 0;
+    width: 100%;    
+    font-size: inherit;
+    cursor: inherit;
+    line-height: inherit;
+    outline: none;
+    grid-area: select;
+}
+
+#sort-container {    
+    width: 90%;
+    height: 100%;
+    min-width: 15ch;
+    max-height: 30ch;
+    background-color: var(--primary);
+    padding: 0.25em 0.5em;
+    border-radius: 4px;                
+    cursor: pointer;
+    line-height: 1.1;
+    font-size: 1rem;    
+    display: grid;
+    align-items: center;
+    grid-template-areas: "select";
+}
+
+#sort-container > select::-ms-expand {
+    display: none;
+}
+
+#sort-container:hover {
+    outline: solid 2px var(--secondary);
+}
+
+#sort-container:after {
+    content: "";
+    width: 0.8em;
+    height: 0.5em;
+    background-color: var(--tertiary);
+    clip-path: polygon(100% 0%, 0 0%, 50% 100%);
+    grid-area: select;
+    justify-self: end;
+}
+
+#recipe-content > #filter-container {
+    display: flex;     
+    flex-direction: column;   
+    gap: 0.5em;
+}
+
+#filter-container > p {
+    color: var(--primary);
+    font-size: 1.5em;
+}
+
+#filter-container > #filter-options {
+    display: grid;
+    column-gap: 0.2em;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
+#filter-options > .checkbox {
+    display: flex;
+    gap: 0.2em;
+}
