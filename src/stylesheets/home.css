@@ -127,5 +127,31 @@ main > #recipe-content > #add-sort-container {
 
 #filter-options > .checkbox {
     display: flex;
+    align-items: center;
     gap: 0.2em;
+    margin-bottom: 0.2em;
 }
+
+.checkbox > input[type=checkbox] {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    width: 16px;
+    height: 16px;
+    background-color: var(--tertiary);
+    cursor: pointer;
+    border-radius: 0.15em;
+}
+
+.checkbox > input[type=checkbox]:checked {
+    background-color: var(--primary);  
+} 
+
+.checkbox > input[type=checkbox]:hover {
+    outline: var(--primary) solid 0.2em;
+}
+
+
+.checkbox > input[type=checkbox]:checked:hover {
+    outline: var(--tertiary) solid 0.2em;
+} 
