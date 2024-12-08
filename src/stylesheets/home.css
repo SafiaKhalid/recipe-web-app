@@ -170,3 +170,18 @@ main > #recipe-content > #add-sort-container {
 #filter-container > #clear-btn:hover {
     outline: solid 0.2em var(--tertiary);
 }
+
+#recipe-content > #recipes-container {
+    margin-top: 2em;
+    display: flex;
+    flex-direction: column;
+    gap: 1em;
+}
+
+#recipes-container > #recipe-card {
+    background-color: var(--primary);
+    border: none;
+    border-radius: 0.4em;
+    display: flex;
+    
+}

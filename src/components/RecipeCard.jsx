@@ -1,5 +1,7 @@
 import { useState } from "react"
 import { Link } from "react-router-dom"
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faUtensils } from '@fortawesome/free-solid-svg-icons'
 
 import { useGlobalContext } from "../context"
 
@@ -54,11 +56,11 @@ const RecipeCard = ({ recipe }) => {
             reader.readAsDataURL(image)                                  
     }
 
-    return <button onClick={() => changeCurrentRecipe(recipe)}>
+    return <button id="recipe-card" onClick={() => changeCurrentRecipe(recipe)}>
         <Link to='/view'>
+            {image ? <img src={displayImage} alt={recipeName || 'recipe image'} /> : <FontAwesomeIcon icon={faUtensils} id="card-alt" />}
             <h2>{recipeName}</h2>
-            <p>Added: {timeStamp}</p>
-            {image ? <img src={displayImage} alt={recipeName || 'recipe image'} /> : <p>{recipeName}</p>}        
+            <p>Added: {timeStamp}</p>                    
             {prepTime && <p>Preparation time: {prepObject.hours.length>0 && `${prepObject.hours}h`} {prepObject.mins.length>0 && `${prepObject.mins}m`} </p>}
             {cookTime && <p>Cook time: {cookObject.hours.length>0 && `${cookObject.hours}h`} {cookObject.mins.length>0 && `${cookObject.mins}m`}</p>}        
         </Link>

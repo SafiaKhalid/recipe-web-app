@@ -143,9 +143,11 @@ const Home = () => {
                     </div>
                     <button id="clear-btn" onClick={filterClear}>Clear filters</button>
                 </div>
-                {recipeCopy.map((recipe) => {
-                    return <RecipeCard key={recipe.id} recipe={recipe} />
-                })}             
+                <section id="recipes-container">
+                    {recipeCopy.map((recipe) => {
+                        return <RecipeCard key={recipe.id} recipe={recipe} />
+                    })}             
+                </section>
             </section>
              : <section>
                 <h2>No recipes added!</h2>
