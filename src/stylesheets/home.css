@@ -182,6 +182,49 @@ main > #recipe-content > #add-sort-container {
     background-color: var(--primary);
     border: none;
     border-radius: 0.4em;
+    padding: 2em 1.5em;    
+}
+
+#recipe-card > a {
+    display: flex;   
+    align-items: center; 
+    gap: 2em;
+    text-decoration: none;
+}
+
+#card-alt-container > #card-alt {
+    font-size: 3em;
+}
+
+a > #card-content {
     display: flex;
-    
+    flex-direction: column;
+    justify-content: center;    
+    align-items: flex-start;
+    font-size: 1.25em;    
+    width: 60%;
+}
+
+#card-content > h2 {
+    font-size: 2em;
+    word-wrap: break-word;    
+    text-align: start;
+}
+
+a > img {
+    width: 6em;
+    height: 6em;    
+    object-fit: cover;
+    outline: solid 0.4em var(--secondary);
+    border-radius: 0.4em;
+}
+
+a > #card-alt-container {
+    width: 6em;
+    height: 6em;    
+    outline: solid 0.4em var(--secondary);
+    border-radius: 0.4em;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }

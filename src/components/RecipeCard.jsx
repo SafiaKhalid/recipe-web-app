@@ -58,11 +58,13 @@ const RecipeCard = ({ recipe }) => {
 
     return <button id="recipe-card" onClick={() => changeCurrentRecipe(recipe)}>
         <Link to='/view'>
-            {image ? <img src={displayImage} alt={recipeName || 'recipe image'} /> : <FontAwesomeIcon icon={faUtensils} id="card-alt" />}
-            <h2>{recipeName}</h2>
-            <p>Added: {timeStamp}</p>                    
-            {prepTime && <p>Preparation time: {prepObject.hours.length>0 && `${prepObject.hours}h`} {prepObject.mins.length>0 && `${prepObject.mins}m`} </p>}
-            {cookTime && <p>Cook time: {cookObject.hours.length>0 && `${cookObject.hours}h`} {cookObject.mins.length>0 && `${cookObject.mins}m`}</p>}        
+            {image ? <img src={displayImage} alt={recipeName || 'recipe image'} /> : <div id="card-alt-container"><FontAwesomeIcon icon={faUtensils} id="card-alt" /></div>}
+            <div id="card-content">
+                <h2>{recipeName}</h2>
+                <p>Added: {timeStamp}</p>                    
+                {prepTime && <p>Preparation time: {prepObject.hours.length>0 && `${prepObject.hours}h`} {prepObject.mins.length>0 && `${prepObject.mins}m`} </p>}
+                {cookTime && <p>Cook time: {cookObject.hours.length>0 && `${cookObject.hours}h`} {cookObject.mins.length>0 && `${cookObject.mins}m`}</p>}        
+            </div>
         </Link>
     </button>
 }
