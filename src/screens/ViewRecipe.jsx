@@ -2,7 +2,7 @@ import { useState } from "react"
 import { useGlobalContext } from "../context"
 import { Link } from "react-router-dom"
 
-const ViewRecipe = () => {
+const ViewRecipe = ({ setViewRecipe }) => {
     const { currentRecipe, deleteRecipe } = useGlobalContext()
     const focusRecipe = currentRecipe[0]
     const { recipeName, timeStamp, image, prepTime, cookTime, servings, categories, description, ingredients, method, notes } = focusRecipe    
@@ -54,17 +54,19 @@ const ViewRecipe = () => {
     if (image) {                        
         reader.readAsDataURL(image)                                  
     }
+
+    const deleteHandler = () => {
+        deleteRecipe(focusRecipe)
+        setViewRecipe(false)
+    }
     
     return <main>
         {modalDisplay && <div>
             Are you sure you want to delete this recipe?            
-            <button onClick={() => deleteRecipe(focusRecipe)}>
-                <Link to='/'>
-                    Yes
-                </Link>
-            </button>            
+            <button onClick={deleteHandler}>Yes</button>            
             <button onClick={() => setModalDisplay(!modalDisplay)}>Go back</button>
         </div>}
+        
         <h1>View Recipe</h1>
         <p>Recipe name: {recipeName}</p>
         <p>Date added: {timeStamp}</p>

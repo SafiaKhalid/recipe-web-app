@@ -192,6 +192,10 @@ main > #recipe-content > #add-sort-container {
     padding: 2em 1.5em; 
     cursor: pointer;   
     transition: all 100ms;
+    display: flex;   
+    align-items: center; 
+    gap: 2em;
+    text-decoration: none;
 }
 
 #recipes-container > #recipe-card:hover {
@@ -209,7 +213,7 @@ main > #recipe-content > #add-sort-container {
     font-size: 3em;
 }
 
-a > #card-content {
+#recipe-card > #card-content {
     display: flex;
     flex-direction: column;
     justify-content: center;    
@@ -224,7 +228,7 @@ a > #card-content {
     text-align: start;
 }
 
-a > img {
+#recipe-card > img {
     width: 6em;
     height: 6em;    
     object-fit: cover;
@@ -232,7 +236,7 @@ a > img {
     border-radius: 0.4em;
 }
 
-a > #card-alt-container {
+#recipe-card >  #card-alt-container {
     width: 6em;
     height: 6em;    
     outline: solid 0.4em var(--secondary);

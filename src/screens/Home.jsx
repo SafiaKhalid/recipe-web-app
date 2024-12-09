@@ -3,6 +3,7 @@ import { Link } from "react-router-dom"
 
 import { useGlobalContext } from "../context"
 import RecipeCard from "../components/RecipeCard"
+import ViewRecipe from "./ViewRecipe"
 import '../stylesheets/home.css'
 
 const Home = () => {
@@ -17,7 +18,8 @@ const Home = () => {
         lunch: false,
         snacks: false,
         other: false,
-    })    
+    })
+    const [viewRecipe, setViewRecipe] = useState(false)
 
     const sortHandle = (e) => {        
         setSortOption(e.target.value)
@@ -80,6 +82,11 @@ const Home = () => {
     }, [filterCheck])
     
     return <main>
+        {viewRecipe && <div id="modal">
+            <p>Modal</p>
+            <ViewRecipe setViewRecipe={setViewRecipe} />
+            </div>}
+        
         <h1>My Recipes</h1>
         {recipeList.length > 0 ? <section id="recipe-content">
             <div id="add-sort-container">
@@ -145,7 +152,7 @@ const Home = () => {
                 </div>
                 <section id="recipes-container">
                     {recipeCopy.map((recipe) => {
-                        return <RecipeCard key={recipe.id} recipe={recipe} />
+                        return <RecipeCard key={recipe.id} recipe={recipe} setViewRecipe={setViewRecipe} />
                     })}             
                 </section>
             </section>

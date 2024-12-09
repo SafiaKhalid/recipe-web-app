@@ -1,11 +1,10 @@
 import { useState } from "react"
-import { Link } from "react-router-dom"
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faUtensils } from '@fortawesome/free-solid-svg-icons'
 
 import { useGlobalContext } from "../context"
 
-const RecipeCard = ({ recipe }) => {
+const RecipeCard = ({ recipe, setViewRecipe }) => {
     const { changeCurrentRecipe } = useGlobalContext()
     const { recipeName, timeStamp, image, prepTime, cookTime } = recipe
     const [displayImage, setDisplayImage] = useState(null)
@@ -56,16 +55,19 @@ const RecipeCard = ({ recipe }) => {
             reader.readAsDataURL(image)                                  
     }
 
-    return <button id="recipe-card" onClick={() => changeCurrentRecipe(recipe)}>
-        <Link to='/view'>
+    const cardHandler = () => {
+        changeCurrentRecipe(recipe)
+        setViewRecipe(true)
+    }
+
+    return <button id="recipe-card" onClick={cardHandler}>        
             {image ? <img src={displayImage} alt={recipeName || 'recipe image'} /> : <div id="card-alt-container"><FontAwesomeIcon icon={faUtensils} id="card-alt" /></div>}
             <div id="card-content">
                 <h2>{recipeName}</h2>
                 <p>Added: {timeStamp}</p>                    
                 {prepTime && <p>Preparation time: {prepObject.hours.length>0 && `${prepObject.hours}h`} {prepObject.mins.length>0 && `${prepObject.mins}m`} </p>}
                 {cookTime && <p>Cook time: {cookObject.hours.length>0 && `${cookObject.hours}h`} {cookObject.mins.length>0 && `${cookObject.mins}m`}</p>}        
-            </div>
-        </Link>
+            </div>        
     </button>
 }
 
