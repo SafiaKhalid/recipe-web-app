@@ -39,7 +39,8 @@ main > #recipe-content > #add-sort-container {
     border: none;
     font-size: 1.1em;    
     padding: 0.5em 0.75em;
-    border-radius: 0.3em;    
+    border-radius: 0.3em;
+    cursor: pointer;    
 }
 
 #add-sort-container > #add-screen-button:hover {
@@ -150,12 +151,12 @@ main > #recipe-content > #add-sort-container {
 } 
 
 .checkbox > input[type=checkbox]:hover {
-    outline: var(--primary) solid 0.2em;
+    outline: var(--secondary) solid 0.2em;
 }
 
 
 .checkbox > input[type=checkbox]:checked:hover {
-    outline: var(--tertiary) solid 0.2em;
+    outline: var(--secondary) solid 0.2em;
 } 
 
 #filter-container > #clear-btn {
@@ -164,11 +165,12 @@ main > #recipe-content > #add-sort-container {
     font-size: 1.25em;    
     border-radius: 0.4em;
     color: var(--secondary);
-    border: none;    
+    border: none;   
+    cursor: pointer; 
 }
 
 #filter-container > #clear-btn:hover {
-    outline: solid 0.2em var(--tertiary);
+    outline: solid 0.2em var(--secondary);
 }
 
 #recipe-content > #recipes-container {
@@ -181,8 +183,13 @@ main > #recipe-content > #add-sort-container {
 #recipes-container > #recipe-card {
     background-color: var(--primary);
     border: none;
-    border-radius: 0.4em;
-    padding: 2em 1.5em;    
+    border-radius: 0.6em;
+    padding: 2em 1.5em; 
+    cursor: pointer;   
+}
+
+#recipes-container > #recipe-card:hover {
+    outline: solid 0.3em var(--secondary);
 }
 
 #recipe-card > a {
