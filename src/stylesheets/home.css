@@ -41,10 +41,12 @@ main > #recipe-content > #add-sort-container {
     padding: 0.5em 0.75em;
     border-radius: 0.3em;
     cursor: pointer;    
+    transition: all 100ms;
 }
 
 #add-sort-container > #add-screen-button:hover {
-    outline: solid 2px var(--secondary);
+    border: none;
+    outline: solid 0.2em var(--secondary);
 }
 
 #add-screen-button > a {
@@ -89,6 +91,7 @@ main > #recipe-content > #add-sort-container {
     display: grid;
     align-items: center;
     grid-template-areas: "select";
+    transition: all 100ms;
 }
 
 #sort-container > select::-ms-expand {
@@ -96,7 +99,7 @@ main > #recipe-content > #add-sort-container {
 }
 
 #sort-container:hover {
-    outline: solid 2px var(--secondary);
+    outline: solid 0.2em var(--secondary);    
 }
 
 #sort-container:after {
@@ -144,6 +147,7 @@ main > #recipe-content > #add-sort-container {
     background-color: var(--tertiary);
     cursor: pointer;
     border-radius: 0.15em;
+    transition: all 100ms;
 }
 
 .checkbox > input[type=checkbox]:checked {
@@ -167,6 +171,7 @@ main > #recipe-content > #add-sort-container {
     color: var(--secondary);
     border: none;   
     cursor: pointer; 
+    transition: all 100ms;
 }
 
 #filter-container > #clear-btn:hover {
@@ -186,6 +191,7 @@ main > #recipe-content > #add-sort-container {
     border-radius: 0.6em;
     padding: 2em 1.5em; 
     cursor: pointer;   
+    transition: all 100ms;
 }
 
 #recipes-container > #recipe-card:hover {
