@@ -83,8 +83,8 @@ const Home = () => {
     
     return <main>
         {viewRecipe && <div id="modal">
-            <p>Modal</p>
-            <ViewRecipe setViewRecipe={setViewRecipe} />
+                <p>Modal</p>
+                <ViewRecipe setViewRecipe={setViewRecipe} />
             </div>}
         
         <h1>My Recipes</h1>

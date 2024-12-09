@@ -1,6 +1,8 @@
 import { useState } from "react"
 import { useGlobalContext } from "../context"
 import { Link } from "react-router-dom"
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faX } from '@fortawesome/free-solid-svg-icons'
 
 const ViewRecipe = ({ setViewRecipe }) => {
     const { currentRecipe, deleteRecipe } = useGlobalContext()
@@ -66,7 +68,9 @@ const ViewRecipe = ({ setViewRecipe }) => {
             <button onClick={deleteHandler}>Yes</button>            
             <button onClick={() => setModalDisplay(!modalDisplay)}>Go back</button>
         </div>}
-        
+        <button onClick={() => setViewRecipe(false)}>
+            <FontAwesomeIcon icon={faX} />
+        </button>
         <h1>View Recipe</h1>
         <p>Recipe name: {recipeName}</p>
         <p>Date added: {timeStamp}</p>

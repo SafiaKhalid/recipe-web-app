@@ -58,6 +58,8 @@ const RecipeCard = ({ recipe, setViewRecipe }) => {
     const cardHandler = () => {
         changeCurrentRecipe(recipe)
         setViewRecipe(true)
+        console.log('recipe view');
+        
     }
 
     return <button id="recipe-card" onClick={cardHandler}>        
