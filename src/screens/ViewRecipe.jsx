@@ -62,54 +62,67 @@ const ViewRecipe = ({ setViewRecipe }) => {
         setViewRecipe(false)
     }
     
-    return <main>
+    return <div id="view-container">
         {modalDisplay && <div>
             Are you sure you want to delete this recipe?            
             <button onClick={deleteHandler}>Yes</button>            
             <button onClick={() => setModalDisplay(!modalDisplay)}>Go back</button>
         </div>}
-        <button onClick={() => setViewRecipe(false)}>
-            <FontAwesomeIcon icon={faX} />
-        </button>
-        <h1>View Recipe</h1>
-        <p>Recipe name: {recipeName}</p>
-        <p>Date added: {timeStamp}</p>
-        {image ? <img src={displayImage} alt={recipeName || 'recipe image'} /> : <p>{recipeName}</p>}        
-        {Object.values(prepObject).filter(e => e !== '').length > 0 && <p>Preparation time: {prepObject.hours.length>0 && `${prepObject.hours}h`} {prepObject.mins.length>0 && `${prepObject.mins}m`} </p>}
-        {Object.values(cookObject).filter(e => e !== '').length > 0 && <p>Cook time: {cookObject.hours.length>0 && `${cookObject.hours}h`} {cookObject.mins.length>0 && `${cookObject.mins}m`}</p>}        
-        {servings && <p>Servings: {servings}</p>}        
+        <div id="view-title">            
+            <div id="view-title-text">                
+                <h1>{recipeName}</h1>
+                <p>Date added: {timeStamp}</p>
+            </div>
+            <button onClick={() => setViewRecipe(false)} id="view-close-btn">
+                <FontAwesomeIcon icon={faX} />
+            </button>        
+        </div>
+        {image ? <img src={displayImage} alt={recipeName || 'recipe image'} id="view-img" /> : <p>{recipeName}</p>}
+        <div id="prep-cook-container">
+            {Object.values(prepObject).filter(e => e !== '').length > 0 && <p>Preparation time: {prepObject.hours.length>0 && `${prepObject.hours}h`} {prepObject.mins.length>0 && `${prepObject.mins}m`} </p>}
+            {Object.values(cookObject).filter(e => e !== '').length > 0 && <p>Cook time: {cookObject.hours.length>0 && `${cookObject.hours}h`} {cookObject.mins.length>0 && `${cookObject.mins}m`}</p>}        
+        </div>        
+        {servings && <p id="view-servings">Servings: {servings}</p>}
         {categories.length>0 && 
-        <div><p>Categories:</p> {
-            categories.map((category, index) => {
-                return <p key={index}>{category.value}</p>
-        })
-            }</div> 
+            <div id="category-container">
+                <p id="category-title">Categories</p>
+                <div id="category-list">
+                    {categories.map((category, index) => {
+                        return <p key={index}>{category.value}</p>
+                    })
+                    }
+                </div>
+            </div> 
         }
-        {description && <p>{description}</p>}
+        {description && <p id="view-description">{description}</p>}
         {ingredients.length>0 && 
-        <div><p>Ingredients:</p> {
+        <div id="view-ingredients">
+            <p id="view-ingredients-title">Ingredients:</p> {
             ingredients.map((ingredient, index) => {
-                return <p key={index}>-{ingredient.item}</p>
+                return <p key={index}>- {ingredient.item}</p>
             })
         }
         </div>}
         {method.length>0 && 
-        <div><p>Method:</p> {
+        <div id="view-method">
+            <p id="view-method-title">Method:</p> {
             method.map((step, index) => {
                 return <p key={index}>{index+1}) {step.item}</p>
             })
         }
         </div>}
-        {notes && <p>Notes: {notes}</p>}
-        <button>
-            <Link to='/edit'>
-                Edit
-            </Link>
-        </button>
-        <button onClick={() => setModalDisplay(!modalDisplay)}>
-            Delete
-        </button>
-    </main>
+        {notes && <p id="view-notes">Notes: {notes}</p>}
+        <div id="edit-delete-container">
+            <button>
+                <Link to='/edit'>
+                    Edit
+                </Link>
+            </button>
+            <button onClick={() => setModalDisplay(!modalDisplay)}>
+                Delete
+            </button>
+        </div>
+    </div>
 }
 
 export default ViewRecipe

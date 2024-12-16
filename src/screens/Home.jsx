@@ -80,10 +80,15 @@ const Home = () => {
             return categoryList.every(category => recipeCategories.includes(category))
         }))
     }, [filterCheck])
+
+    /* useEffect(() => {
+        if (viewRecipe) {
+            document.getElementsByClassName('view-fixed')[0].setAttribute('style', `top:-${window.scrollY + 20}px`)
+        }
+    }, [viewRecipe]) */
     
-    return <main>
-        {viewRecipe && <div id="modal">
-                <p>Modal</p>
+    return <main className={viewRecipe ? "view-fixed" : "view-move"}>
+        {viewRecipe && <div id="modal">                
                 <ViewRecipe setViewRecipe={setViewRecipe} />
             </div>}
         

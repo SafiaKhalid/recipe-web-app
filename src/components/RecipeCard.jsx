@@ -55,11 +55,9 @@ const RecipeCard = ({ recipe, setViewRecipe }) => {
             reader.readAsDataURL(image)                                  
     }
 
-    const cardHandler = () => {
+    const cardHandler = () => {             
         changeCurrentRecipe(recipe)
-        setViewRecipe(true)
-        console.log('recipe view');
-        
+        setViewRecipe(true)           
     }
 
     return <button id="recipe-card" onClick={cardHandler}>        
