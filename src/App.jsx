@@ -6,6 +6,7 @@ import ViewRecipe from './screens/ViewRecipe';
 import EditRecipe from './screens/EditRecipe';
 
 const App = () => {
+  /* document.body.focus({ preventScroll: true }) */
   return <Router>
     <Routes>
       <Route exact path='/' Component={Home}></Route>

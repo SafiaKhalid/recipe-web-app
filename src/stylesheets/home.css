@@ -12,17 +12,29 @@
     padding: 0;
     box-sizing: border-box;
     font-family: "Outfit", sans-serif;
-    color: var(--secondary); 
-    scroll-behavior: smooth;   
-}
-
-html {
-    scroll-behavior: smooth;
+    color: var(--secondary);     
 }
 
 body {
-    background-color: var(--background);    
-    scroll-behavior: smooth;    
+    background-color: var(--background);        
+}
+
+.ReactModal__Body--open {
+  /* position: static;
+  overflow-y: scroll; */
+  /* overflow: hidden;  */
+    /* position: fixed; */
+    /* height: 100%; */
+}
+
+.ReactModal__Html--open {
+  /* overflow-y: hidden;
+  position: fixed; */
+}
+
+.ReactModalPortal {
+  /* position: fixed;
+  z-index: 1 !important; */
 }
 
 body main {    

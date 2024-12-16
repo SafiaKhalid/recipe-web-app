@@ -55,12 +55,18 @@ const RecipeCard = ({ recipe, setViewRecipe }) => {
             reader.readAsDataURL(image)                                  
     }
 
-    const cardHandler = () => {             
+    const cardHandler = (e) => {  
+        e.preventDefault()
+        /* e.target.focus({ 
+            preventScroll: true,
+            shouldFocusAfterRender:false
+         })
+        e.stopPropagation() */
         changeCurrentRecipe(recipe)
         setViewRecipe(true)           
     }
 
-    return <button id="recipe-card" onClick={cardHandler}>        
+    return <button id="recipe-card" onClick={e => cardHandler(e)}>        
             {image ? <img src={displayImage} alt={recipeName || 'recipe image'} /> : <div id="card-alt-container"><FontAwesomeIcon icon={faUtensils} id="card-alt" /></div>}
             <div id="card-content">
                 <h2>{recipeName}</h2>

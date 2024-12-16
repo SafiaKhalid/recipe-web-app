@@ -1,10 +1,13 @@
 import { useState, useEffect } from "react"
 import { Link } from "react-router-dom"
+import Modal from 'react-modal'
 
 import { useGlobalContext } from "../context"
 import RecipeCard from "../components/RecipeCard"
 import ViewRecipe from "./ViewRecipe"
 import '../stylesheets/home.css'
+
+Modal.setAppElement('#root');
 
 const Home = () => {
     const { recipeList } = useGlobalContext()
@@ -88,9 +91,21 @@ const Home = () => {
     }, [viewRecipe]) */
     
     return <main className={viewRecipe ? "view-fixed" : "view-move"}>
-        {viewRecipe && <div id="modal">                
-                <ViewRecipe setViewRecipe={setViewRecipe} />
-            </div>}
+        {/* {viewRecipe && <div id="modal">
+                <Modal
+                    isOpen={viewRecipe}
+                    onRequestClose={() => setViewRecipe(false)}                    
+                >
+                    <ViewRecipe setViewRecipe={setViewRecipe} />
+                </Modal>                                
+            </div>} */}
+        <Modal
+            isOpen={viewRecipe}
+            onRequestClose={() => setViewRecipe(false)}   
+            htmlOpenClassName='ReactModal_Html--open'                 
+        >
+            <ViewRecipe setViewRecipe={setViewRecipe} />
+        </Modal> 
         
         <h1>My Recipes</h1>
         {recipeList.length > 0 ? <section id="recipe-content">
