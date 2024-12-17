@@ -90,19 +90,12 @@ const Home = () => {
         }
     }, [viewRecipe]) */
     
-    return <main className={viewRecipe ? "view-fixed" : "view-move"}>
-        {/* {viewRecipe && <div id="modal">
-                <Modal
-                    isOpen={viewRecipe}
-                    onRequestClose={() => setViewRecipe(false)}                    
-                >
-                    <ViewRecipe setViewRecipe={setViewRecipe} />
-                </Modal>                                
-            </div>} */}
+    return <main className={viewRecipe ? "view-fixed" : "view-move"}>        
         <Modal
             isOpen={viewRecipe}
             onRequestClose={() => setViewRecipe(false)}   
-            htmlOpenClassName='ReactModal_Html--open'                 
+            htmlOpenClassName='ReactModal_Html--open'
+            className="Modal"                  
         >
             <ViewRecipe setViewRecipe={setViewRecipe} />
         </Modal> 

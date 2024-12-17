@@ -269,44 +269,20 @@ main > #recipe-content > #add-sort-container {
 
 /* Modal */
 
-/* body:has(.view-fixed) {
-    overflow: hidden;
-} */
-
-
-/* main.view-fixed {
-    position: relative;
-    overflow-y: hidden;  
-} */
 main.view-fixed {
     position: fixed;
-    overflow: hidden;       
-    height: 100%;    
-    scroll-behavior: smooth;
-    /* position: relative;
-    overflow: hidden; 
-    height: 100vh;      
-    margin-bottom: 0; */
+    overflow: hidden;           
 }
 
-main > #modal {
-    background-color: var(--modal);
-    width: 100vw;
-    height: calc(100% + 6em);
-    position: absolute;    
-    scroll-behavior: smooth;
-    left: -2em;
-    top: -3em;
-    z-index: 999;
-    outline: solid black 2px;    
+.ReactModal__Overlay {
+    overflow-y: scroll;
 }
 
-#modal > #view-container {
+.Modal {
     background-color: var(--primary);
     margin: 3em 2em;
-    border-radius: 0.6em;
     padding: 2em 1.5em; 
-    scroll-behavior: smooth;
+    border-radius: 0.6em;    
 }
 
 #view-container > #view-title {
@@ -320,6 +296,10 @@ main > #modal {
     border: none;    
     font-size: 2em;
     cursor: pointer;
+}
+
+#view-title > #view-close-btn:hover svg > path {
+    color: var(--tertiary);
 }
 
 #view-container > #view-img {
@@ -387,13 +367,24 @@ main > #modal {
 
 #view-container > #edit-delete-container {
     display: flex;
-    gap: 2em;
+    justify-content: space-between;
+    margin-top: 2em;
 }
 
 #edit-delete-container > button {
     background: none;
-    outline: solid var(--tertiary) 0.4em;
+    outline: solid var(--tertiary) 0.2em;
     border: none;
     border-radius: 0.3em;
-    padding: 1.5em 1em;
+    padding: 0.5em 1em;
+    font-size: 1.5em;    
+    cursor: pointer;
+}
+
+#edit-delete-container > button:hover {
+    background: var(--modal);
+}
+
+#edit-delete-container > button > a {
+    text-decoration: none;
 }
