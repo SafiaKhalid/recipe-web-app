@@ -63,10 +63,12 @@ const ViewRecipe = ({ setViewRecipe }) => {
     }
     
     return <div id="view-container">
-        {modalDisplay && <div>
-            Are you sure you want to delete this recipe?            
-            <button onClick={deleteHandler}>Yes</button>            
-            <button onClick={() => setModalDisplay(!modalDisplay)}>Go back</button>
+        {modalDisplay && <div id="delete-modal">
+            Are you sure you want to delete this recipe? 
+            <div id="delete-button-container">
+                <button onClick={deleteHandler}>Yes</button>            
+                <button onClick={() => setModalDisplay(!modalDisplay)}>Go back</button>
+            </div>           
         </div>}
         <div id="view-title">            
             <div id="view-title-text">                

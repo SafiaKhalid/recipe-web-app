@@ -47,6 +47,10 @@ const Home = () => {
     }
 
     useEffect(() => {
+        setRecipeCopy(recipeList)
+    }, [recipeList])
+
+    useEffect(() => {
         switch (sortOption) {
             case 'dateDes':
                 setRecipeCopy([...recipeCopy].sort((a,b) => new Date(b.timeStamp) - new Date(a.timeStamp)))          

@@ -283,6 +283,7 @@ main.view-fixed {
     margin: 3em 2em;
     padding: 2em 1.5em; 
     border-radius: 0.6em;    
+    position: relative;
 }
 
 #view-container > #view-title {
@@ -387,4 +388,44 @@ main.view-fixed {
 
 #edit-delete-container > button > a {
     text-decoration: none;
+}
+
+/* Delete modal */
+
+#view-container > #delete-modal {
+    position: absolute;
+    background-color: #710624d9;    
+    height: 100%;
+    width: 100%;
+    left: 0;
+    top: 0;
+    border-radius: 0.3em;
+    padding: 2em 1.5em;
+    text-align: center;
+    font-size: 2em;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+#delete-modal > #delete-button-container {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    margin-top: 1em;
+}
+
+#delete-button-container > button {
+    background: none;
+    border: none;
+    border-radius: 0.3em;
+    padding: 0.25em 0.5em;
+    font-size: 1em;    
+    cursor: pointer;
+    outline: solid var(--tertiary) 0.2em;
+}
+
+#delete-button-container > button:hover {
+    background: var(--modal);
 }
