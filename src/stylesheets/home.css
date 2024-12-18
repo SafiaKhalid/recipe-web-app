@@ -3,8 +3,7 @@
     --modal: #dd425990;
     --primary: #710625;
     --secondary: #FFF8E8;
-    --tertiary: #FCD581;
-    scroll-behavior: smooth;
+    --tertiary: #FCD581;    
 }
 
 * {
@@ -17,24 +16,6 @@
 
 body {
     background-color: var(--background);        
-}
-
-.ReactModal__Body--open {
-  /* position: static;
-  overflow-y: scroll; */
-  /* overflow: hidden;  */
-    /* position: fixed; */
-    /* height: 100%; */
-}
-
-.ReactModal__Html--open {
-  /* overflow-y: hidden;
-  position: fixed; */
-}
-
-.ReactModalPortal {
-  /* position: fixed;
-  z-index: 1 !important; */
 }
 
 body main {    
@@ -257,7 +238,7 @@ main > #recipe-content > #add-sort-container {
     border-radius: 0.4em;
 }
 
-#recipe-card >  #card-alt-container {
+#recipe-card > #card-alt-container {
     width: 6em;
     height: 6em;    
     outline: solid 0.4em var(--secondary);

@@ -1,0 +1,120 @@
+:root {
+    --background: #DD4258;
+    --modal: #dd425990;
+    --primary: #710625;
+    --secondary: #FFF8E8;
+    --tertiary: #FCD581;    
+}
+
+main > form {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5em;
+}
+
+main > form > div {
+    display: flex;
+    gap: 0.5em;
+    width: 100%;
+    justify-content: space-between;
+    align-items: center;
+}
+
+main > form > div > label{
+    color: var(--primary);
+    font-size: 1.5em;
+}
+
+main > form > div > input {
+    width: 50%;
+    border: 0.25em solid var(--tertiary);
+    border-radius: 0.5em;
+    background-color: var(--background);
+    padding: 0.4em 0.8em;
+    font-size: 1.25em;
+}
+
+main > form > div > input:focus {
+    outline: none;
+    border: 0.25em solid var(--primary);
+}
+
+/* Form categories */
+
+form > #add-container-categories {
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+main > form > div > #category {
+    width: 100%;
+    background-color: var(--background);
+    border-radius: 0.5em;
+    border: 0.25em solid var(--tertiary);    
+    font-size: 1.25em;
+
+}
+
+#category:focus-within {
+    border: 0.25em solid var(--primary);
+}
+
+#category > .react-select__control {
+    background-color: var(--background);
+    border: none;    
+    padding: 0.2em 0;
+}
+
+.react-select__control > .react-select__value-container > .react-select__placeholder {
+    color: var(--secondary);
+}
+
+.react-select__indicators > .react-select__indicator-separator {
+    background-color: var(--secondary);
+    width: 0.1em;
+} 
+
+#category > .react-select__control--is-focused {    
+    border: none;
+    box-shadow: none;    
+    border-radius: 0.25em;    
+    background: none;
+}
+
+.react-select__menu > .react-select__menu-list {
+    background-color: var(--background);
+    outline: 0.25em solid var(--primary);
+    border-radius: 0.5em;
+}
+
+.react-select__menu-list > .react-select__option--is-focused {
+    background: none;
+    font-weight: bold;
+    color: var(--primary);
+}
+
+.react-select__value-container > div.react-select__multi-value {
+    background: none;
+    border-right: 0.1em var(--secondary) solid;    
+    padding: 0.1em;   
+}
+
+.react-select__value-container > div.react-select__multi-value:nth-last-child(2) {    
+    border: none; 
+    background: none;  
+}
+
+.react-select__multi-value > .react-select__multi-value__label {
+    color: var(--secondary);
+    font-size: 1em;
+}
+
+.react-select__multi-value svg  {
+    height: 1em;
+    width: 1em;
+}
+
+.react-select__indicators > .react-select__indicator > svg {
+    height: 1.75em;
+    width: 1.75em;
+}

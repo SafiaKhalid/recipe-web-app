@@ -4,6 +4,7 @@ import { v4 as uuidv4 } from "uuid"
 
 import MultiInput from "../components/MultiInput"
 import { useGlobalContext } from "../context"
+import '../stylesheets/add.css'
 
 const AddRecipe = () => {
     const { addRecipe } = useGlobalContext()
@@ -99,38 +100,48 @@ const AddRecipe = () => {
         <h1>New Recipe</h1>
 
         <form onSubmit={formSubmit}>
-            <div>
+            <div id="add-container-name">
                 <label htmlFor='recipe_name'>Recipe name</label>
                 <input type="text" id="recipe_name" required></input>
             </div>
-            <div>
+            <div id="add-container-categories">
                 {/*connect label to select component */}
                 <label /* htmlFor='category' */>Categories</label>                
-                <Select id="category" name="category" value={selected} options={categoryOptions} onChange={setSelected} closeMenuOnSelect={false} isMulti required />
+                <Select 
+                    id="category" 
+                    name="category" 
+                    value={selected} 
+                    options={categoryOptions} 
+                    onChange={setSelected} 
+                    closeMenuOnSelect={false}
+                    className="react-select-container" 
+                    classNamePrefix="react-select"
+                    /* menuIsOpen={true} */
+                    isMulti required />
             </div>
-            <div>
+            <div id="add-container-prep">
                 <label htmlFor='prep_time'>Preparation time</label>
                 <input type="time" id="prep_time" name='prep_time' min='00:00'></input>
             </div>
-            <div>
+            <div id="add-container-cook">
                 <label htmlFor='cook_time'>Cook time</label>
                 <input type="time" id="cook_time" name="cook_time" min='00:00'></input>
             </div>
-            <div>
+            <div id="add-container-servings">
                 <label htmlFor='servings'>Servings</label>
                 <input type="number" id="servings"></input>
             </div>
-            <div>
+            <div id="add-container-description">
                 <label htmlFor='description'>Description</label>
                 <textarea id="description"></textarea>
             </div>
             <MultiInput fields={ingredientFields} setFields={setIngredientFields} numbered={false} />
             <MultiInput fields={methodFields} setFields={setMethodFields} numbered={true} />
-            <div>
+            <div id="add-container-notes">
                 <label htmlFor='notes'>Notes</label>
                 <textarea id="notes"></textarea>
             </div>
-            <div>
+            <div id="add-container-image">
                 <p>Image</p>
                 {displayImage ? <section>
                         <img src={displayImage} alt={newRecipe.name || 'recipe image'} />
