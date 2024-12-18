@@ -118,3 +118,11 @@ main > form > div > #category {
     height: 1.75em;
     width: 1.75em;
 }
+
+form > div > input[type="time"] {
+    width: 50%;
+}
+
+form > div > input[type="time"]::-webkit-calendar-picker-indicator {
+   filter: invert(89%) sepia(1%) saturate(2071%) hue-rotate(351deg) brightness(102%) contrast(114%);
+}
