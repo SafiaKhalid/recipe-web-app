@@ -32,10 +32,10 @@ main > form > div > input {
     background-color: var(--background);
     padding: 0.4em 0.8em;
     font-size: 1.25em;
+    outline: none;
 }
 
-main > form > div > input:focus {
-    outline: none;
+main > form > div > input:focus {    
     border: 0.25em solid var(--primary);
 }
 
@@ -125,4 +125,29 @@ form > div > input[type="time"] {
 
 form > div > input[type="time"]::-webkit-calendar-picker-indicator {
    filter: invert(89%) sepia(1%) saturate(2071%) hue-rotate(351deg) brightness(102%) contrast(114%);
+}
+
+form :is(#add-container-description, #add-container-notes) {
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+form > div > textarea {
+    background: none;
+    border: 0.3em solid var(--tertiary);
+    border-radius: 0.6em;
+    width: 100%;
+    resize: none;
+    outline: none;
+    overflow: auto;
+    padding: 0.4em 0.8em;
+    font-size: 1.25em;
+}
+
+form > div > textarea:focus {
+    border: 0.3em solid var(--primary);
+}
+
+form > div > textarea::placeholder {
+    color: #fff8e8bc;
 }

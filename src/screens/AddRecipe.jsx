@@ -133,13 +133,13 @@ const AddRecipe = () => {
             </div>
             <div id="add-container-description">
                 <label htmlFor='description'>Description</label>
-                <textarea id="description"></textarea>
+                <textarea id="description" placeholder="Description" rows="7"></textarea>
             </div>
             <MultiInput fields={ingredientFields} setFields={setIngredientFields} numbered={false} />
             <MultiInput fields={methodFields} setFields={setMethodFields} numbered={true} />
             <div id="add-container-notes">
                 <label htmlFor='notes'>Notes</label>
-                <textarea id="notes"></textarea>
+                <textarea id="notes" placeholder="Notes" rows="5"></textarea>
             </div>
             <div id="add-container-image">
                 <p>Image</p>
