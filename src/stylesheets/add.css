@@ -258,6 +258,7 @@ form > button {
     border: none;
     font-size: 2em;
     margin-top: 1em;
+    cursor: pointer;
 }
 
 form > button:hover {

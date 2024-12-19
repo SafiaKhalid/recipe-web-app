@@ -1,8 +1,9 @@
 import { useState, useEffect } from "react"
 import Select from "react-select"
-
+import { Link } from "react-router-dom"
 import { useGlobalContext } from "../context"
 import MultiInput from "../components/MultiInput"
+import '../stylesheets/edit.css'
 
 const EditRecipe = () => {
     const { currentRecipe, editRecipe } = useGlobalContext()
@@ -61,10 +62,20 @@ const EditRecipe = () => {
                 <label htmlFor='recipe_name'>Recipe name</label>
                 <input type="text" id="recipe_name" value={newRecipe.recipeName} onChange={e => setNewRecipe({...newRecipe, recipeName:e.target.value})} required></input>
             </div>
-            <div>
+            <div id="add-container-categories">
                 {/*connect label to select component */}
                 <label /* htmlFor='category' */>Categories</label>                
-                <Select id="category" name="category" value={selected} options={categoryOptions} onChange={setSelected} closeMenuOnSelect={false} isMulti required />
+                <Select 
+                    id="category" 
+                    name="category" 
+                    value={selected} 
+                    options={categoryOptions} 
+                    onChange={setSelected} 
+                    closeMenuOnSelect={false} 
+                    className="react-select-container" 
+                    classNamePrefix="react-select"
+                    isMulti required 
+                />
             </div>
             <div>
                 <label htmlFor='prep_time'>Preparation time</label>
@@ -84,26 +95,30 @@ const EditRecipe = () => {
                 <label htmlFor='servings'>Servings</label>
                 <input type="number" id="servings" value={newRecipe.servings} onChange={e => setNewRecipe({...newRecipe, servings:e.target.value})}></input>
             </div>
-            <div>
+            <div id="add-container-description">
                 <label htmlFor='description'>Description</label>
                 <textarea id="description" value={newRecipe.description} onChange={e => setNewRecipe({...newRecipe, description:e.target.value})}></textarea>
             </div>
             
             <MultiInput fields={ingredientFields} setFields={setIngredientFields} numbered={false} />
             <MultiInput fields={methodFields} setFields={setMethodFields} numbered={true} />
-            <div>
+            <div id="add-container-notes">
                 <label htmlFor='notes'>Notes</label>
                 <textarea id="notes" value={newRecipe.notes} onChange={e => setNewRecipe({...newRecipe, notes:e.target.value})}></textarea>
             </div>
-            <div>
+            <div id="add-container-image">
                 <p>Image</p>
-                {displayImage ? <section>
-                        <img src={displayImage} alt={newRecipe.name || 'recipe image'} />
+                {displayImage ? <section>                        
                         <input type="file" accept="image/png, image/jpeg" onChange={imageHandler} />
+                        <img src={displayImage} alt={newRecipe.name || 'recipe image'} />
                     </section> : <input type="file" accept="image/png, image/jpeg" onChange={imageHandler} />}
             </div>
 
-            <button type="submit">Add recipe</button>
+            <button type="submit">
+                <Link to='/'>
+                    Edit recipe
+                </Link>                
+            </button>
         </form>
     </main>
 }
