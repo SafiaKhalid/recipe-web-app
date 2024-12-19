@@ -410,3 +410,26 @@ main.view-fixed {
 #delete-button-container > button:hover {
     background: var(--modal);
 }
+
+/* No recipes */
+
+main > #empty-list {
+    display: flex;
+    flex-direction: column;
+    gap: 2em;
+}
+
+#empty-list > button {
+    background: none;
+    width: fit-content;
+    border: none;
+    font-size: 1.75em;    
+}
+
+#empty-list > button:hover a {
+    color: #fff8e8b1;   
+}
+
+#empty-list > button > a {
+    text-decoration: none;
+}

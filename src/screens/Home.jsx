@@ -173,7 +173,7 @@ const Home = () => {
                     })}             
                 </section>
             </section>
-             : <section>
+             : <section id="empty-list">
                 <h2>No recipes added!</h2>
                 <button>
                     <Link to='/add'>
