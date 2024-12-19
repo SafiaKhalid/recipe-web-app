@@ -119,6 +119,8 @@ main > form > div > #category {
     width: 1.75em;
 }
 
+/* Time containers */
+
 form > div > input[type="time"] {
     width: 50%;
 }
@@ -126,6 +128,8 @@ form > div > input[type="time"] {
 form > div > input[type="time"]::-webkit-calendar-picker-indicator {
    filter: invert(89%) sepia(1%) saturate(2071%) hue-rotate(351deg) brightness(102%) contrast(114%);
 }
+
+/* Notes/decription containers */
 
 form :is(#add-container-description, #add-container-notes) {
     flex-direction: column;
@@ -150,4 +154,112 @@ form > div > textarea:focus {
 
 form > div > textarea::placeholder {
     color: #fff8e8bc;
+}
+
+/* Fieldset containers */
+
+form > fieldset {
+    border: none;    
+}
+
+form > fieldset > legend {
+    font-size: 1.5em;
+    color: var(--primary);
+    margin-bottom: 0.25em;
+}
+
+form > fieldset > button {
+    background: none;
+    border: none;
+    font-size: 1.25em;
+    cursor: pointer;
+}
+
+form > fieldset > button:hover p {
+    color: #fff8e8b1;
+}
+
+form > fieldset > div {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 0.5em;    
+    align-items: center;
+}
+
+fieldset > div > input {
+    background: none;
+    border: 0.25em solid var(--tertiary);
+    border-radius: 0.4em;
+    width: 70%;
+    font-size: 1.15em;
+    padding: 0.4em 0.8em;
+    outline: none;
+}
+
+fieldset > div > input:focus {
+    border: 0.25em solid var(--primary);
+}
+
+fieldset > div > button {
+    background: none;
+    padding: 0.4em 0.8em;
+    border: none;
+    font-size: 1em;
+}
+
+fieldset > div > button:hover {
+    color: #fff8e8b1;
+}
+
+fieldset > div > p {
+    font-size: 1.15em;
+}
+
+/* Image container */
+
+form > #add-container-image {
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+form > #add-container-image > p {
+    font-size: 1.5em;
+    color: var(--primary);
+}
+
+form > #add-container-image > input {
+    width: 65%;
+    font-size: 1em;
+    border: none;
+    padding: 0;
+    margin-bottom: 0.5em;
+}
+
+form > #add-container-image > section {
+    display: flex;
+    flex-direction: column;
+    gap: 1em;
+}
+
+form > #add-container-image > section > input {
+    width: 65%;
+    font-size: 1em;
+}
+
+#add-container-image > section > img {
+    width: 100%;    
+    border: 0.5em solid var(--tertiary);
+    border-radius: 0.8em;
+}
+
+form > button {
+    background: none;
+    border: none;
+    font-size: 2em;
+    margin-top: 1em;
+}
+
+form > button:hover {
+    color: #fff8e8b1;
 }
