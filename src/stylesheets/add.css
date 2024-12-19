@@ -1,0 +1,266 @@
+:root {
+    --background: #DD4258;
+    --modal: #dd425990;
+    --primary: #710625;
+    --secondary: #FFF8E8;
+    --tertiary: #FCD581;    
+}
+
+main > form {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5em;
+}
+
+main > form > div {
+    display: flex;
+    gap: 0.5em;
+    width: 100%;
+    justify-content: space-between;
+    align-items: center;
+}
+
+main > form > div > label{
+    color: var(--primary);
+    font-size: 1.5em;
+}
+
+main > form > div > input {
+    width: 50%;
+    border: 0.25em solid var(--tertiary);
+    border-radius: 0.5em;
+    background-color: var(--background);
+    padding: 0.4em 0.8em;
+    font-size: 1.25em;
+    outline: none;
+}
+
+main > form > div > input:focus {    
+    border: 0.25em solid var(--primary);
+}
+
+/* Form categories */
+
+form > #add-container-categories {
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+main > form > div > #category {
+    width: 100%;
+    background-color: var(--background);
+    border-radius: 0.5em;
+    border: 0.25em solid var(--tertiary);    
+    font-size: 1.25em;
+
+}
+
+#category:focus-within {
+    border: 0.25em solid var(--primary);
+}
+
+#category > .react-select__control {
+    background-color: var(--background);
+    border: none;    
+    padding: 0.2em 0;
+}
+
+.react-select__control > .react-select__value-container > .react-select__placeholder {
+    color: var(--secondary);
+}
+
+.react-select__indicators > .react-select__indicator-separator {
+    background-color: var(--secondary);
+    width: 0.1em;
+} 
+
+#category > .react-select__control--is-focused {    
+    border: none;
+    box-shadow: none;    
+    border-radius: 0.25em;    
+    background: none;
+}
+
+.react-select__menu > .react-select__menu-list {
+    background-color: var(--background);
+    outline: 0.25em solid var(--primary);
+    border-radius: 0.5em;
+}
+
+.react-select__menu-list > .react-select__option--is-focused {
+    background: none;
+    font-weight: bold;
+    color: var(--primary);
+}
+
+.react-select__value-container > div.react-select__multi-value {
+    background: none;
+    border-right: 0.1em var(--secondary) solid;    
+    padding: 0.1em;   
+}
+
+.react-select__value-container > div.react-select__multi-value:nth-last-child(2) {    
+    border: none; 
+    background: none;  
+}
+
+.react-select__multi-value > .react-select__multi-value__label {
+    color: var(--secondary);
+    font-size: 1em;
+}
+
+.react-select__multi-value svg  {
+    height: 1em;
+    width: 1em;
+}
+
+.react-select__indicators > .react-select__indicator > svg {
+    height: 1.75em;
+    width: 1.75em;
+}
+
+/* Time containers */
+
+form > div > input[type="time"] {
+    width: 50%;
+}
+
+form > div > input[type="time"]::-webkit-calendar-picker-indicator {
+   filter: invert(89%) sepia(1%) saturate(2071%) hue-rotate(351deg) brightness(102%) contrast(114%);
+}
+
+/* Notes/decription containers */
+
+form :is(#add-container-description, #add-container-notes) {
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+form > div > textarea {
+    background: none;
+    border: 0.3em solid var(--tertiary);
+    border-radius: 0.6em;
+    width: 100%;
+    resize: none;
+    outline: none;
+    overflow: auto;
+    padding: 0.4em 0.8em;
+    font-size: 1.25em;
+}
+
+form > div > textarea:focus {
+    border: 0.3em solid var(--primary);
+}
+
+form > div > textarea::placeholder {
+    color: #fff8e8bc;
+}
+
+/* Fieldset containers */
+
+form > fieldset {
+    border: none;    
+}
+
+form > fieldset > legend {
+    font-size: 1.5em;
+    color: var(--primary);
+    margin-bottom: 0.25em;
+}
+
+form > fieldset > button {
+    background: none;
+    border: none;
+    font-size: 1.25em;
+    cursor: pointer;
+}
+
+form > fieldset > button:hover p {
+    color: #fff8e8b1;
+}
+
+form > fieldset > div {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 0.5em;    
+    align-items: center;
+}
+
+fieldset > div > input {
+    background: none;
+    border: 0.25em solid var(--tertiary);
+    border-radius: 0.4em;
+    width: 70%;
+    font-size: 1.15em;
+    padding: 0.4em 0.8em;
+    outline: none;
+}
+
+fieldset > div > input:focus {
+    border: 0.25em solid var(--primary);
+}
+
+fieldset > div > button {
+    background: none;
+    padding: 0.4em 0.8em;
+    border: none;
+    font-size: 1em;
+}
+
+fieldset > div > button:hover {
+    color: #fff8e8b1;
+}
+
+fieldset > div > p {
+    font-size: 1.15em;
+}
+
+/* Image container */
+
+form > #add-container-image {
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+form > #add-container-image > p {
+    font-size: 1.5em;
+    color: var(--primary);
+}
+
+form > #add-container-image > input {
+    width: 65%;
+    font-size: 1em;
+    border: none;
+    padding: 0;
+    margin-bottom: 0.5em;
+}
+
+form > #add-container-image > section {
+    display: flex;
+    flex-direction: column;
+    gap: 1em;
+}
+
+form > #add-container-image > section > input {
+    width: 65%;
+    font-size: 1em;
+}
+
+#add-container-image > section > img {
+    width: 100%;    
+    border: 0.5em solid var(--tertiary);
+    border-radius: 0.8em;
+}
+
+form > button {
+    background: none;
+    border: none;
+    font-size: 2em;
+    margin-top: 1em;
+    cursor: pointer;
+}
+
+form > button:hover {
+    color: #fff8e8b1;
+}
